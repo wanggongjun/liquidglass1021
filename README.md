@@ -17,7 +17,7 @@ python -m http.server 8080
 | 模式 | 入口 | 实现 |
 | --- | --- | --- |
 | 初版 · SVG | `modes/initial.html` | 首次交付的固定参数界面，无调参框；SVG 背景位移折射 |
-| 终版 · WebGL2 | `modes/final.html` | 缓存底板纹理、持续 GPU 折射、可分离高斯模糊；包含调参、参数导入导出和原版 SVG 对照 |
+| 终版 · 实时 | `modes/final.html` | 默认对实际页面做 SVG 实时折射，包含调参、参数导入导出；静态缓存只作为实验选项 |
 
 模式可通过首页按钮或 `?mode=initial` / `?mode=final` 选择。独立打开模式页面可获得完整视口。
 
@@ -30,7 +30,7 @@ python -m http.server 8080
 - [原始测量结果](docs/测量结果.json)：包括测试视口和像素比。
 - [完整说明](docs/说明.txt)：交互、参数备份与测量边界。说明中的 `index.html` 指原交付入口，对应本仓库 `modes/final.html`；`baseline-svg.html` 指调参后、优化前的内部对照，不等同最早初版。
 
-滚动时不关闭折射。当前静态底板适合纹理缓存，但缓存光栅化与原生 DOM 仍可能存在抗锯齿和亚像素差异。rAF 频率与 GPU 绘制耗时不能证明屏幕实际呈现稳定 120 FPS；压力下的合成线程同步尚无显示级轨迹验证。详细限制见日志。
+滚动时不关闭折射。默认实时路径保留底板文字选中与动态变化；不会启动 WebGL 或生成页面快照。实验缓存无法反映浏览器文字选择、悬停及动画等绘制状态，不适合作为通用页面的默认渲染器。旧版自动缓存偏好不再沿用，外观参数不变。rAF 频率与 GPU 绘制耗时不能证明屏幕实际呈现稳定 120 FPS；压力下的合成线程同步尚无显示级轨迹验证。详细限制见日志。
 
 ## 预览
 
@@ -38,7 +38,7 @@ python -m http.server 8080
 
 ![初版](previews/initial.png)
 
-终版（验收默认参数）：
+终版（验收默认参数；历史缓存版截图）：
 
 ![终版](previews/final.png)
 
@@ -47,3 +47,7 @@ python -m http.server 8080
 基于 [xiaofangstudio/liquid-glass-web](https://github.com/xiaofangstudio/liquid-glass-web) 与 [Shu Ding 的 liquid-glass](https://github.com/shuding/liquid-glass) 的 SVG 位移思路。终版 WebGL2 缓存渲染不依赖外部库。人物和内容均为虚构。
 
 第三方声明见 [THIRD-PARTY-NOTICES.txt](THIRD-PARTY-NOTICES.txt)。未配置 GitHub Pages 或其他公开部署。
+
+实时修复验收：底板选中高亮参与折射。
+
+![实时选区](previews/live-selection.png)

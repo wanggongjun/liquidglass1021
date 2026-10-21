@@ -41,7 +41,7 @@
 <aside class="tuner" id="tuner" aria-labelledby="tuner-title" hidden>
 <h2 id="tuner-title">调一块属于你的玻璃</h2>
 <p id="tuner-help">拖动即生效，参数自动保存在本机。<br>透明度越高，底板文字越清楚。</p>
-<div class="engine-choice"><label for="engine">渲染引擎</label><select id="engine"><option value="auto">自动 · WebGL2 缓存折射</option><option value="svg">原版 SVG · 对照</option></select><small id="engine-status" role="status">准备中…</small></div><div id="tuner-sliders"></div>
+<div class="engine-choice"><label for="engine">渲染引擎</label><select id="engine"><option value="svg">实时折射 · 默认</option><option value="auto">实验 · 静态纹理缓存</option></select><small id="engine-status" role="status">准备中…</small></div><div id="tuner-sliders"></div>
 <label class="tint-row" for="tint">玻璃底色<input type="color" id="tint" value="#f7faef"></label>
 <div class="tuner-actions"><button id="preview-sheet">展开玻璃</button><button id="reset-glass">恢复默认</button></div><div class="parameter-files"><button id="export-params">导出参数</button><button id="import-params">导入参数</button><input type="file" id="params-file" accept="application/json,.json"></div><p id="parameter-file-status" role="status"></p>
 </aside>
@@ -170,7 +170,8 @@ void main(){
 // The displacement map refracts the actual page behind the sheet; text inside stays sharp.
 const sheet=document.querySelector('#profile'),glass=document.querySelector('#glass'),openButton=document.querySelector('#open'),openHandle=document.querySelector('#swipe-open'),closeButton=document.querySelector('#close');
 let opened=false,previousFocus=null,gpuRenderer=null;
-let enginePreference='auto';try{enginePreference=localStorage.getItem('between-render-engine-v1')||'auto'}catch{}
+// v2 requires explicit opt-in: the old automatic cache missed native selection and other paint state.
+let enginePreference='svg';try{if(localStorage.getItem('between-render-engine-v2')==='auto')enginePreference='auto'}catch{}
 function setOpen(value){if(value===opened)return;opened=value;if(value)previousFocus=document.activeElement;sheet.inert=!value;sheet.setAttribute('aria-hidden',String(!value));sheet.classList.toggle('is-open',value);document.body.dataset.open=String(value);[openButton,openHandle].forEach(el=>el.setAttribute('aria-expanded',String(value)));if(value){requestAnimationFrame(()=>{if(opened)closeButton.focus({preventScroll:true})})}else{(previousFocus instanceof HTMLElement&&previousFocus!==document.body?previousFocus:openButton).focus({preventScroll:true})}}
 closeButton.addEventListener('click',()=>setOpen(false));
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&opened)setOpen(false)});
@@ -250,9 +251,10 @@ function updateGlass(){
 syncControls();new ResizeObserver(scheduleAppearance).observe(glass);applyAppearance();
 const engineSelect=document.querySelector('#engine'),engineStatus=document.querySelector('#engine-status');
 engineSelect.value=enginePreference==='svg'?'svg':'auto';
-function engineState(message){for(const key of ['refraction','edge'])document.querySelector('#param-'+key).disabled=!(supportsRefraction||gpuRenderer?.ready);engineStatus.textContent=enginePreference==='svg'?'原版 SVG · 连续实时折射':message;document.documentElement.dataset.engine=enginePreference!=='svg'&&gpuRenderer?.ready?'webgl2':'svg';refreshBackdrop();gpuRenderer?.requestFrame()}
-gpuRenderer=new CachedGlass({sheet,scene:document.querySelector('#scene'),mapCanvas:canvas,getParams:()=>params,getScale:()=>baseScale,onState:engineState});
-engineSelect.addEventListener('change',()=>{enginePreference=engineSelect.value;try{localStorage.setItem('between-render-engine-v1',enginePreference)}catch{}engineState(gpuRenderer.ready?'WebGL2 · 缓存底板，连续折射':gpuRenderer.failed||'准备底板纹理，期间保持 SVG 折射')});
+function engineState(message){for(const key of ['refraction','edge'])document.querySelector('#param-'+key).disabled=!(supportsRefraction||gpuRenderer?.ready);engineStatus.textContent=enginePreference==='svg'?(supportsRefraction?'实时页面 · 保留文字选中与动态变化；滚动持续折射。':'当前浏览器不支持 SVG 背景折射，仅支持实时模糊，请使用 Chrome / Edge。'):'实验模式：不包含文字选中、悬停和动画状态。'+message;document.documentElement.dataset.engine=enginePreference!=='svg'&&gpuRenderer?.ready?'webgl2':'svg';refreshBackdrop();gpuRenderer?.requestFrame()}
+function ensureCachedRenderer(){if(!gpuRenderer&&enginePreference!=='svg')gpuRenderer=new CachedGlass({sheet,scene:document.querySelector('#scene'),mapCanvas:canvas,getParams:()=>params,getScale:()=>baseScale,onState:engineState})}
+ensureCachedRenderer();engineState('准备静态纹理');
+engineSelect.addEventListener('change',()=>{enginePreference=engineSelect.value;try{localStorage.setItem('between-render-engine-v2',enginePreference)}catch{}ensureCachedRenderer();engineState(gpuRenderer?.ready?'WebGL2 · 缓存底板，连续折射':gpuRenderer?.failed||'准备底板纹理，期间保持 SVG 折射')});
 
 const parameterFileStatus=document.querySelector('#parameter-file-status'),parameterFile=document.querySelector('#params-file');
 document.querySelector('#export-params').addEventListener('click',()=>{const url=URL.createObjectURL(new Blob([JSON.stringify({version:1,appearance:params},null,2)],{type:'application/json'})),link=document.createElement('a');link.href=url;link.download='between-glass-parameters.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);parameterFileStatus.textContent='已导出当前外观，可用于备份或对照测试。'});
