@@ -1,0 +1,287 @@
+{
+  "date": "2026-10-21",
+  "environment": "Codex in-app Chromium, local HTTP, Windows; device-dependent results",
+  "appearance": "Default appearance for timing tests; not the user saved file: configuration",
+  "limits": [
+    "rAF timing is not presented-frame FPS",
+    "GPU queries exclude browser compositor and display",
+    "No full DevTools GPU/presentation trace available through current browser tools",
+    "file: navigation blocked by browser tool URL policy; no workaround attempted",
+    "No guaranteed 120 FPS or zero compositor/main-thread drift under artificial CPU stress"
+  ],
+  "runs": [
+    {
+      "label": "SVG baseline",
+      "results": [
+        {
+          "engine": "svg",
+          "open": false,
+          "actualOpen": false,
+          "mode": "rAF-scroll",
+          "viewport": [
+            1365,
+            950,
+            1
+          ],
+          "durationMs": 6000,
+          "callbacks": 720,
+          "meanMs": 8.34,
+          "p50Ms": 8.3,
+          "p95Ms": 8.4,
+          "p99Ms": 8.5,
+          "over12ms": 1,
+          "over20ms": 0,
+          "longTasks": 0,
+          "note": "rAF scheduling only; not presented-frame FPS or GPU trace"
+        },
+        {
+          "engine": "svg",
+          "open": true,
+          "actualOpen": true,
+          "mode": "rAF-scroll",
+          "viewport": [
+            1365,
+            950,
+            1
+          ],
+          "durationMs": 6000,
+          "callbacks": 719,
+          "meanMs": 8.36,
+          "p50Ms": 8.3,
+          "p95Ms": 8.4,
+          "p99Ms": 8.6,
+          "over12ms": 2,
+          "over20ms": 0,
+          "longTasks": 0,
+          "note": "rAF scheduling only; not presented-frame FPS or GPU trace"
+        }
+      ]
+    },
+    {
+      "label": "GPU DPR 1 prototype",
+      "results": [
+        {
+          "engine": "webgl2",
+          "open": true,
+          "actualOpen": true,
+          "mode": "rAF-scroll",
+          "viewport": [
+            1365,
+            950,
+            1
+          ],
+          "durationMs": 6000,
+          "callbacks": 721,
+          "meanMs": 8.33,
+          "p50Ms": 8.3,
+          "p95Ms": 8.4,
+          "p99Ms": 8.5,
+          "over12ms": 0,
+          "over20ms": 0,
+          "longTasks": 0,
+          "gpuBefore": {
+            "ready": true,
+            "failed": null,
+            "sceneSize": [
+              1350,
+              1153
+            ],
+            "canvas": [
+              750,
+              402
+            ],
+            "captureCount": 1,
+            "captureMs": 53,
+            "draws": 83,
+            "textureUploads": 2,
+            "dpr": 1,
+            "maxTexture": 16384,
+            "gpuTimer": true,
+            "gpuSamples": 5,
+            "gpuMedianMs": 0.277,
+            "gpuP95Ms": 0.694
+          },
+          "gpuAfter": {
+            "ready": true,
+            "failed": null,
+            "sceneSize": [
+              1350,
+              1153
+            ],
+            "canvas": [
+              750,
+              402
+            ],
+            "captureCount": 1,
+            "captureMs": 53,
+            "draws": 610,
+            "textureUploads": 2,
+            "dpr": 1,
+            "maxTexture": 16384,
+            "gpuTimer": true,
+            "gpuSamples": 31,
+            "gpuMedianMs": 0.213,
+            "gpuP95Ms": 1.577
+          },
+          "note": "rAF scheduling only; not presented-frame FPS or GPU trace"
+        }
+      ]
+    },
+    {
+      "label": "GPU DPR 2 prototype",
+      "results": [
+        {
+          "engine": "webgl2",
+          "open": true,
+          "actualOpen": true,
+          "mode": "rAF-scroll",
+          "viewport": [
+            1280,
+            720,
+            2
+          ],
+          "durationMs": 6000,
+          "callbacks": 721,
+          "meanMs": 8.33,
+          "p50Ms": 8.3,
+          "p95Ms": 8.4,
+          "p99Ms": 8.5,
+          "over12ms": 0,
+          "over20ms": 0,
+          "longTasks": 0,
+          "gpuBefore": {
+            "ready": true,
+            "failed": null,
+            "sceneSize": [
+              1265,
+              1153
+            ],
+            "canvas": [
+              1500,
+              804
+            ],
+            "captureCount": 2,
+            "captureMs": 156,
+            "draws": 75,
+            "textureUploads": 5,
+            "dpr": 2,
+            "maxTexture": 16384,
+            "gpuTimer": true,
+            "gpuSamples": 4,
+            "gpuMedianMs": 0.162,
+            "gpuP95Ms": 0.543
+          },
+          "gpuAfter": {
+            "ready": true,
+            "failed": null,
+            "sceneSize": [
+              1265,
+              1153
+            ],
+            "canvas": [
+              1500,
+              804
+            ],
+            "captureCount": 2,
+            "captureMs": 156,
+            "draws": 709,
+            "textureUploads": 5,
+            "dpr": 2,
+            "maxTexture": 16384,
+            "gpuTimer": true,
+            "gpuSamples": 36,
+            "gpuMedianMs": 0.697,
+            "gpuP95Ms": 1.148
+          },
+          "note": "rAF scheduling only; not presented-frame FPS or GPU trace"
+        }
+      ]
+    },
+    {
+      "label": "Final delivered build DPR 2",
+      "results": [
+        {
+          "engine": "webgl2",
+          "open": true,
+          "actualOpen": true,
+          "mode": "rAF-scroll",
+          "viewport": [
+            1280,
+            720,
+            2
+          ],
+          "durationMs": 6000,
+          "callbacks": 721,
+          "meanMs": 8.33,
+          "p50Ms": 8.3,
+          "p95Ms": 8.4,
+          "p99Ms": 8.5,
+          "over12ms": 0,
+          "over20ms": 0,
+          "longTasks": 0,
+          "renderModes": [
+            "webgl2"
+          ],
+          "gpuBefore": {
+            "ready": true,
+            "failed": null,
+            "sceneSize": [
+              1265,
+              1153
+            ],
+            "canvas": [
+              1500,
+              804
+            ],
+            "captureCount": 1,
+            "captureMs": 147,
+            "draws": 50,
+            "textureUploads": 2,
+            "dpr": 2,
+            "maxTexture": 16384,
+            "gpuTimer": true,
+            "gpuSamples": 3,
+            "gpuMedianMs": 0.97,
+            "gpuP95Ms": 1.959
+          },
+          "gpuAfter": {
+            "ready": true,
+            "failed": null,
+            "sceneSize": [
+              1265,
+              1153
+            ],
+            "canvas": [
+              1500,
+              804
+            ],
+            "captureCount": 1,
+            "captureMs": 147,
+            "draws": 683,
+            "textureUploads": 2,
+            "dpr": 2,
+            "maxTexture": 16384,
+            "gpuTimer": true,
+            "gpuSamples": 35,
+            "gpuMedianMs": 0.81,
+            "gpuP95Ms": 2.249
+          },
+          "note": "rAF scheduling only; not presented-frame FPS or GPU trace"
+        }
+      ]
+    }
+  ],
+  "visualComparisons": {
+    "cachedSceneViewport": {
+      "meanAbsoluteChannelDifference": 0.969,
+      "pixelFractionWithAnyChannelDifferenceAbove8": 0.0292
+    },
+    "defaultGlassVisibleLowerRegion": {
+      "meanAbsoluteChannelDifference": 0.2855,
+      "p99AbsoluteChannelDifference": 4,
+      "pixelFractionWithAnyChannelDifferenceAbove8": 0.00119
+    },
+    "note": "8-bit RGB comparisons on static viewport captures; source antialiasing and subpixel positions can differ. Not a whole-page pixel-identity claim."
+  },
+  "indexSHA256": "e72264812c5cc69bdcdb97a533b6bb6d54e449860fcdc3a8b62bb55e317ac97c"
+}
