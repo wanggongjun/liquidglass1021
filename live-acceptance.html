@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f5f5ef"><title>实时终版 · 动态验收</title>
+<style>
+:root{color-scheme:light;--ink:#263c32;--muted:#758176;--paper:#f5f5ef;--line:#d8ddd2;--ease:cubic-bezier(.22,1,.36,1)}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,"Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased}button{font:inherit;color:inherit;cursor:pointer}button:focus-visible,a:focus-visible{outline:3px solid #c36b38;outline-offset:5px}::selection{background:#d9e5c8}header,main,footer{width:min(1180px,calc(100% - 112px));margin:auto}header{height:100px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{font-family:Georgia,serif;font-size:29px;letter-spacing:-1.6px}.brand span{font-family:Arial,sans-serif;font-size:12px;letter-spacing:2px;margin-left:16px;color:var(--muted)}.edition{font-size:11px;letter-spacing:2px;display:flex;align-items:center;gap:10px}.dot{width:6px;height:6px;border-radius:50%;background:#849b70;display:inline-block}.hero{min-height:450px;display:grid;grid-template-columns:1.25fr 1fr;align-items:center;gap:30px;padding:52px 0}.eyebrow{font-size:10px;letter-spacing:2.5px;text-transform:uppercase}.hero h1{font-size:clamp(48px,5.1vw,74px);font-weight:500;line-height:1.18;letter-spacing:-3px;margin:24px 0}.hero h1 em{font-family:Georgia,serif;font-weight:400;color:#869575}.intro{font-size:13px;line-height:2;color:#6e796c;margin:0;letter-spacing:.5px}.art{height:330px;position:relative;isolation:isolate;overflow:hidden;border-radius:49% 49% 3px 3px;background:linear-gradient(145deg,#e9ecdd,#d8e0c9 68%,#c4d1b4)}.sun{position:absolute;width:95px;height:95px;border-radius:50%;background:#cf7349;top:48px;right:66px;box-shadow:0 0 50px #db976634}.hill{position:absolute;width:560px;height:430px;border:1px solid #657b4766;border-radius:50%;top:150px;left:-180px;transform:rotate(-27deg);box-shadow:0 0 0 12px #e7ebd233,0 0 0 13px #73895855,0 0 0 26px #e7ebd233,0 0 0 27px #73895855,0 0 0 40px #e7ebd233,0 0 0 41px #73895855,0 0 0 54px #e7ebd233,0 0 0 55px #73895855,0 0 0 68px #e7ebd233,0 0 0 69px #73895855,0 0 0 82px #e7ebd233,0 0 0 83px #73895855,0 0 0 96px #e7ebd233,0 0 0 97px #73895855}.art-caption{position:absolute;bottom:20px;left:23px;font-size:9px;letter-spacing:2px;color:#4c6143}.section-head{display:flex;justify-content:space-between;padding:22px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:11px;letter-spacing:2px}.section-head span:last-child{color:var(--muted);letter-spacing:1px}.notes{display:grid;grid-template-columns:repeat(3,1fr);padding:32px 0 40px;gap:46px}.note-number{font-family:Georgia,serif;color:#92a080;font-style:italic;font-size:18px}.notes h2{font-size:19px;font-weight:500;letter-spacing:1px;margin:20px 0 16px}.notes p{font-size:12px;line-height:2.1;color:#7c8478;margin:0}.note-meta{font-size:9px;letter-spacing:1.5px;margin-top:24px;color:#8b9283}.quote{padding:30px 0 50px;border-top:1px solid var(--line);display:flex;gap:26px;align-items:center}.quote b{font-family:Georgia,serif;font-size:58px;font-weight:400;color:#a5b196;line-height:1}.quote p{font-family:Georgia,"Microsoft YaHei",serif;font-size:21px;font-weight:400;letter-spacing:1px;margin:0}.quote small{display:block;font-family:Arial,sans-serif;font-size:9px;letter-spacing:2px;color:var(--muted);margin-top:14px}footer{font-size:9px;letter-spacing:1px;color:#92998a;display:flex;justify-content:space-between;border-top:1px solid var(--line);padding:22px 0 130px}.invitation{position:fixed;bottom:max(24px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);z-index:4;display:flex;flex-direction:column;align-items:center;gap:9px;transition:opacity .2s,visibility .2s}.swipe-handle{border:0;background:none;padding:10px 28px 3px;touch-action:none}.swipe-handle:before{content:"";display:block;width:40px;height:4px;border-radius:9px;background:#89977b}.open-button{border:1px solid #f9faf4;background:#283f32;color:#fffef6;box-shadow:0 8px 24px #25382a20;border-radius:30px;padding:14px 24px;display:flex;gap:25px;align-items:center;font-size:12px;letter-spacing:1px}.open-button span{font-size:17px}.hint{font-size:9px;letter-spacing:1px;color:#75816a}.sheet{position:fixed;z-index:5;width:min(750px,calc(100% - 32px));bottom:max(16px,env(safe-area-inset-bottom));left:50%;border-radius:34px;transform:translate(-50%,calc(100% + 70px));visibility:hidden;transition:transform .65s var(--ease),visibility .65s;isolation:isolate;outline:none}.sheet.is-open{transform:translate(-50%,0);visibility:visible}.glass{position:absolute;inset:0;border-radius:inherit;z-index:-2;border:1px solid transparent;overflow:hidden;pointer-events:none}.glass-finish{position:absolute;inset:0;border-radius:inherit;z-index:-1;background:linear-gradient(130deg,#ffffff78,#f7faefad 25%,#f7faefb8 72%,#ffffff72);box-shadow:inset 0 1px 1px #fff,inset 1px 0 1px #ffffffc9,inset -1px -1px 2px #ffffffbf,0 18px 70px #364c3029,0 2px 8px #364c3014;border:1px solid #ffffffad;pointer-events:none;overflow:visible}.glass-finish:after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(135deg,#fff7,transparent 24%,transparent 72%,#fff4);pointer-events:none}.sheet-top{height:41px;display:flex;align-items:center;justify-content:center}.close-handle{border:0;background:transparent;touch-action:none;padding:15px 40px}.close-handle:before{content:"";display:block;width:38px;height:4px;border-radius:8px;background:#66785c66}.sheet-content{padding:6px 40px 30px}.profile-header{display:flex;justify-content:space-between;align-items:center;font-size:9px;letter-spacing:2px;color:#697863}.close{width:29px;height:29px;border-radius:50%;border:1px solid #53634320;background:#ffffff60;font-size:19px;line-height:1}.identity{display:flex;align-items:center;gap:20px;margin:18px 0 22px}.avatar{width:76px;height:76px;flex-shrink:0;border-radius:25px;background:#d77f51;position:relative;overflow:hidden;box-shadow:inset 0 1px 2px #fff5}.avatar:before{content:"";position:absolute;bottom:-28px;left:12px;width:85px;height:85px;border:1px solid #f7d9ab99;border-radius:50%;box-shadow:0 0 0 9px #f7d9ab20,0 0 0 10px #f7d9ab66,0 0 0 19px #f7d9ab20,0 0 0 20px #f7d9ab66}.avatar span{position:absolute;left:18px;top:14px;font-family:Georgia,serif;font-style:italic;color:#fff6dc;font-size:32px}.name{font-size:30px;letter-spacing:3px;margin:0 0 8px;font-weight:500}.name small{font-family:Georgia,serif;font-style:italic;font-size:17px;letter-spacing:0;color:#66775c;margin-left:12px}.role{font-size:11px;color:#65735e;letter-spacing:1px}.bio{font-size:13px;line-height:1.9;letter-spacing:.4px;margin:0;max-width:540px}.facts{display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:15px;border-top:1px solid #687c4926;border-bottom:1px solid #687c4926;padding:18px 0;margin-top:23px}.facts dt{font-size:9px;color:#6b7c60;margin-bottom:9px;letter-spacing:1px}.facts dd{margin:0;font-size:12px}.profile-foot{display:flex;align-items:center;justify-content:space-between;margin-top:21px;font-size:9px;letter-spacing:1px;color:#65735c}.status{display:flex;align-items:center;gap:7px}.status .dot{background:#6c8c58;width:5px;height:5px}body[data-open="true"] .invitation{opacity:0;visibility:hidden;pointer-events:none}.no-svg .glass-finish{background:#f6faefbd}#filter-defs{position:fixed;width:0;height:0;pointer-events:none}
+@media(min-width:1600px){.hero{min-height:500px}.notes{padding-bottom:65px}}
+@media(max-width:700px){header,main,footer{width:calc(100% - 40px)}header{height:75px}.brand{font-size:26px}.brand span{font-size:9px;margin-left:10px}.edition{font-size:8px;letter-spacing:1px}.hero{grid-template-columns:1fr;padding:37px 0 30px;gap:28px}.hero h1{font-size:48px;margin:20px 0;letter-spacing:-2px}.intro{font-size:12px}.art{height:205px;border-radius:100px 100px 3px 3px}.sun{width:65px;height:65px;top:25px}.hill{top:115px}.section-head{font-size:9px;letter-spacing:1px;padding:18px 0}.notes{grid-template-columns:1fr;gap:27px;padding-top:26px}.notes article{display:grid;grid-template-columns:30px 1fr;column-gap:14px}.note-number{grid-row:1/4;padding-top:3px}.notes h2{margin:0 0 10px;font-size:17px}.note-meta{margin-top:15px}.quote{gap:15px;padding:25px 0 35px}.quote p{font-size:16px}.quote small{font-size:8px}.sheet{border-radius:28px;bottom:max(10px,env(safe-area-inset-bottom));width:calc(100% - 20px);max-height:calc(100dvh - 28px);overflow-y:auto;overscroll-behavior:contain}.sheet-content{padding:2px 24px 25px}.identity{gap:15px;margin:16px 0 20px}.avatar{width:65px;height:65px;border-radius:21px}.name{font-size:25px}.name small{font-size:15px;margin-left:7px}.role{font-size:10px;letter-spacing:0}.bio{font-size:12px}.facts{grid-template-columns:1fr 1.45fr;row-gap:17px;margin-top:19px;padding:17px 0}.facts div:last-child{grid-column:1/-1}.facts div:last-child dt{display:inline;margin-right:15px}.facts div:last-child dd{display:inline}.facts dd{font-size:11px}.profile-foot{font-size:8px;letter-spacing:0}.hint{background:#f5f5efb3;border-radius:10px;padding:3px 8px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+
+.tuner-toggle{position:fixed;right:24px;top:22px;z-index:12;border:1px solid #cdd5c7;border-radius:30px;background:#fffef7;padding:10px 17px;font-size:12px;box-shadow:0 3px 14px #263c3210}.tuner{position:fixed;right:24px;top:73px;z-index:12;width:280px;max-height:calc(100dvh - 100px);overflow:auto;overscroll-behavior:contain;border:1px solid #d8ddd2;border-radius:20px;padding:21px;background:#fffef9;box-shadow:0 12px 45px #263c3220}.tuner[hidden]{display:none}.tuner h2{font-size:15px;font-weight:500;margin:0}.tuner p{font-size:10px;color:#7c8478;line-height:1.8;margin:9px 0 18px}.tuning-row{display:block;margin:16px 0}.tuning-label{display:flex;justify-content:space-between;font-size:11px;gap:10px}.tuning-label output{font-variant-numeric:tabular-nums;color:#7d8e69}.tuning-row input[type=range]{width:100%;margin:11px 0 0;accent-color:#647b50;cursor:ew-resize;height:16px}.tuning-row input:focus-visible{outline:2px solid #c36b38;outline-offset:3px}.tint-row{display:flex;align-items:center;justify-content:space-between;font-size:11px}.tint-row input{width:44px;height:28px;padding:2px;border:1px solid #d8ddd2;border-radius:7px;background:#fff;cursor:pointer}.tuner-actions{display:flex;gap:8px;border-top:1px solid #e4e7dc;padding-top:16px;margin-top:18px}.tuner-actions button{flex:1;padding:10px 5px;border-radius:10px;border:1px solid #d4dccb;background:#f0f3e9;font-size:11px}.tuner-actions button:first-child{background:#2d4434;color:#fff;border-color:#2d4434}.glass-finish:after{opacity:var(--glass-highlight,1)}
+@media(max-width:700px){.tuner-toggle{top:80px;right:15px;font-size:10px;padding:8px 12px}.tuner{right:15px;top:120px;max-height:38dvh;width:260px;padding:17px}.tuning-row{margin:13px 0}.edition{margin-right:0}}
+
+
+
+#scene{background:var(--paper);min-height:100vh}.gpu-glass{position:absolute;inset:0;width:100%;height:100%;border-radius:inherit;z-index:-3;pointer-events:none}.gpu-glass[hidden]{display:none}.engine-choice{border-top:1px solid #e4e7dc;border-bottom:1px solid #e4e7dc;padding:13px 0;margin:14px 0;font-size:11px}.engine-choice select{width:100%;margin:10px 0;padding:8px;border:1px solid #d4dccb;border-radius:8px;background:#f7f9f1;color:#263c32}.engine-choice small{display:block;font-size:10px;color:#7c8478;line-height:1.8}
+
+#swipe-edge{position:fixed;bottom:0;left:0;right:0;height:84px;z-index:3;touch-action:none}body[data-open="true"] #swipe-edge{pointer-events:none}.open-button{touch-action:none}
+
+@media(max-width:700px){.sheet{overflow:visible}.sheet-content{max-height:calc(100dvh - 110px);overflow-y:auto;overscroll-behavior:contain}}.parameter-files{display:flex;gap:8px;margin-top:9px}.parameter-files button{flex:1;border:1px solid #d4dccb;border-radius:9px;background:#fffef9;padding:9px 4px;font-size:10px;color:#647456}.parameter-files input{display:none}#parameter-file-status{font-size:10px;color:#647456;line-height:1.7;margin:8px 0 0}
+</style>
+</head>
+<body data-open="false">
+<div id="scene"><header><div class="brand">between<span>林间来信</span></div><div class="edition"><i class="dot"></i> VOL. 024 / AUTUMN</div></header>
+<main>
+<section class="hero"><div><div class="eyebrow">A little space to slow down</div><h1>在日常之间，<br>留一点<em>空白。</em></h1><p class="intro">记录设计、自然，和一些无用却美好的事。<br>不急着抵达，先好好感受。</p></div><div class="art" role="img" aria-label="浅绿色山丘等高线与一轮赭色太阳"><div class="sun"></div><div class="hill"></div><span class="art-caption">35° 41′ N &nbsp; / &nbsp; A QUIET AFTERNOON</span></div></section>
+<div class="section-head"><span>随手记 &nbsp; / &nbsp; FIELD NOTES</span><span>关于生活的三个切片 ↙</span></div>
+<section class="notes" aria-label="随手记"><article><span class="note-number">01</span><h2>让光线成为设计的一部分</h2><p>下午三点，阳光穿过窗边的玻璃杯，在桌面画下一条弯曲的线。我喜欢这样的瞬间：秩序里有一点意外，安静里有一点流动。</p><div class="note-meta">DESIGN & OBSERVATION &nbsp; · &nbsp; 10.18</div></article><article><span class="note-number">02</span><h2>周末，去没有信号的地方</h2><p>沿着山路走到茶田深处，风吹过的时候，叶子像一片缓慢的海。把手机放进口袋，才发现不被打扰，本身就是一件很奢侈的事。</p><div class="note-meta">OUTSIDE & WITHIN &nbsp; · &nbsp; 10.12</div></article><article><span class="note-number">03</span><h2>少一点，反而更靠近</h2><p>最近在练习做减法。书桌上只留下正在读的书，界面上只留下必要的信息。留白不是缺少什么，是给真正重要的东西腾出位置。</p><div class="note-meta">LESS, BUT BETTER &nbsp; · &nbsp; 10.06</div></article></section>
+<section class="quote"><b>“</b><p>好的事物，自有它的节奏。<small>MAKE ROOM FOR WHAT MATTERS.</small></p></section>
+</main>
+<footer><span>© 2026 BETWEEN · 演示人物与内容均为虚构</span><span>慢一点，也很好。</span></footer></div>
+<div id="swipe-edge" aria-hidden="true"></div><div class="invitation"><button class="swipe-handle" id="swipe-open" aria-label="向上滑动或点击，展开个人资料" aria-controls="profile" aria-expanded="false"></button><button class="open-button" id="open" aria-controls="profile" aria-expanded="false">认识一下，林屿 <span aria-hidden="true">↗</span></button><span class="hint">从底部上拉 · 或点击展开</span></div>
+<section class="sheet" id="profile" role="dialog" aria-labelledby="profile-name" aria-hidden="true" tabindex="-1" inert>
+<div class="glass" id="glass"></div><div class="glass-finish" id="glass-finish" aria-hidden="true"></div><div class="sheet-top"><button class="close-handle" id="swipe-close" aria-label="向下滑动或点击，收起个人资料"></button></div>
+<div class="sheet-content"><div class="profile-header"><span>A PERSON BEHIND THE NOTES</span><button class="close" id="close" aria-label="关闭个人资料">×</button></div><div class="identity"><div class="avatar" aria-hidden="true"><span>ly.</span></div><div><h2 class="name" id="profile-name">林屿<small>Lin Yu</small></h2><div class="role">独立设计师 / 周末山野漫游者</div></div></div><p class="bio">你好，我是林屿。用设计整理想法，用散步找回灵感。<br>喜欢有温度的界面、旧书店，以及雨后空气里的草木香。</p><dl class="facts"><div><dt>坐标 / BASED IN</dt><dd>杭州，中国</dd></div><div><dt>此刻 / CURRENTLY</dt><dd>设计一款让人慢下来的应用</dd></div><div><dt>偏爱 / LITTLE JOYS</dt><dd>手冲咖啡 · 徒步 · 胶片</dd></div></dl><div class="profile-foot"><span class="status"><i class="dot"></i>保持好奇，偶尔离线</span><span>个人资料演示 &nbsp; / &nbsp; 下滑收起 ↓</span></div></div>
+</section>
+
+<button class="tuner-toggle" id="tuner-toggle" aria-controls="tuner" aria-expanded="false">☷ 玻璃参数</button>
+<aside class="tuner" id="tuner" aria-labelledby="tuner-title" hidden>
+<h2 id="tuner-title">调一块属于你的玻璃</h2>
+<p id="tuner-help">拖动即生效，参数自动保存在本机。<br>透明度越高，底板文字越清楚。</p>
+<div class="engine-choice"><label for="engine">渲染引擎</label><select id="engine"><option value="svg">实时折射 · 默认</option><option value="auto">实验 · 静态纹理缓存</option></select><small id="engine-status" role="status">准备中…</small></div><div id="tuner-sliders"></div>
+<label class="tint-row" for="tint">玻璃底色<input type="color" id="tint" value="#f7faef"></label>
+<div class="tuner-actions"><button id="preview-sheet">展开玻璃</button><button id="reset-glass">恢复默认</button></div><div class="parameter-files"><button id="export-params">导出参数</button><button id="import-params">导入参数</button><input type="file" id="params-file" accept="application/json,.json"></div><p id="parameter-file-status" role="status"></p>
+</aside>
+<svg id="filter-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><filter id="liquid-refraction" x="0" y="0" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feImage result="displacement" preserveAspectRatio="none"/><feDisplacementMap in="SourceGraphic" in2="displacement" xChannelSelector="R" yChannelSelector="G"/></filter></defs></svg>
+<script>
+/* Local cached-backdrop renderer. No dependencies, network requests or screenshot loop. */
+class CachedGlass {
+ constructor({sheet,scene,mapCanvas,getParams,getScale,onState}){
+  Object.assign(this,{sheet,scene,mapCanvas,getParams,getScale,onState});
+  this.ready=false;this.active=false;this.lost=false;this.frame=0;this.revision=0;this.mapRevision=-1;this.captureRevision=0;this.captureTime=0;this.frames=0;this.uploads=0;this.captureCount=0;this.kernels=new Map();this.kernelKey='';this.sizeKey='';
+  this.canvas=document.createElement('canvas');this.canvas.className='gpu-glass';this.canvas.setAttribute('aria-hidden','true');sheet.prepend(this.canvas);
+  const gl=this.gl=this.canvas.getContext('webgl2',{alpha:true,antialias:false,depth:false,stencil:false,preserveDrawingBuffer:false,premultipliedAlpha:true});
+  if(!gl){this.fail('WebGL2 不可用，保留原版 SVG');return}
+  try{
+   this.timerExt=gl.getExtension('EXT_disjoint_timer_query_webgl2');this.queries=[];this.gpuTimes=[];this.maxTexture=gl.getParameter(gl.MAX_TEXTURE_SIZE);this.vao=gl.createVertexArray();gl.bindVertexArray(this.vao);
+   this.refract=this.program(`#version 300 es
+precision highp float;
+uniform sampler2D u_scene;uniform sampler2D u_map;
+uniform vec2 u_output,u_ratio,u_pane,u_origin,u_sceneSize;
+uniform float u_padding,u_scale,u_saturation;
+out vec4 color;
+void main(){
+ vec2 local=vec2(gl_FragCoord.x,u_output.y-gl_FragCoord.y)/u_ratio-vec2(u_padding)/u_ratio;
+ vec2 displacement=(texture(u_map,vec2(local.x/u_pane.x,1.-local.y/u_pane.y)).rg-.5)*u_scale;
+ vec2 point=local+displacement;
+ vec2 mirrored=u_pane-abs(mod(point,u_pane*2.)-u_pane);
+ vec2 source=u_origin+mirrored;
+ vec3 rgb=texture(u_scene,vec2(source.x/u_sceneSize.x,1.-source.y/u_sceneSize.y)).rgb;
+ float gray=dot(rgb,vec3(.213,.715,.072));
+ color=vec4(mix(vec3(gray),rgb,u_saturation),1.);
+}`);
+   this.blur=this.program(`#version 300 es
+precision highp float;
+uniform sampler2D u_image;uniform vec2 u_inputSize,u_axis;
+uniform float u_padding,u_center,u_saturation;
+uniform int u_count;uniform float u_weight[256],u_offset[256];
+out vec4 color;
+void main(){
+ vec2 uv=(gl_FragCoord.xy+vec2(u_padding))/u_inputSize;
+ vec3 rgb=texture(u_image,uv).rgb*u_center;
+ for(int i=0;i<256;i++){if(i>=u_count)break;vec2 d=u_axis*u_offset[i];rgb+=(texture(u_image,uv+d).rgb+texture(u_image,uv-d).rgb)*u_weight[i];}
+ float gray=dot(rgb,vec3(.213,.715,.072));color=vec4(mix(vec3(gray),rgb,u_saturation),1.);
+}`);
+   this.sceneTexture=this.texture();this.mapTexture=this.texture();this.a=this.target();this.b=this.target();
+   this.canvas.addEventListener('webglcontextlost',e=>{if(this.disposed)return;e.preventDefault();this.lost=true;this.ready=false;cancelAnimationFrame(this.frame);this.frame=0;this.canvas.hidden=true;this.onState('GPU 上下文丢失，保持 SVG 折射')});
+   this.canvas.addEventListener('webglcontextrestored',()=>{if(!this.disposed)this.onState('GPU 已恢复，刷新页面可重新启用')});
+   this.onScroll=()=>this.requestFrame();window.addEventListener('scroll',this.onScroll,{passive:true});
+   this.resizeObserver=new ResizeObserver(()=>this.invalidate());this.resizeObserver.observe(scene);
+   this.mutationObserver=new MutationObserver(()=>this.invalidate());this.mutationObserver.observe(scene,{subtree:true,childList:true,characterData:true,attributes:true});
+   this.onResize=()=>this.invalidate();this.onFonts=()=>this.invalidate();document.fonts?.addEventListener('loadingdone',this.onFonts);window.addEventListener('resize',this.onResize);
+   this.invalidate();
+  }catch(error){this.fail(error.message)}
+ }
+ program(fragment){const gl=this.gl,compile=(type,source)=>{const s=gl.createShader(type);gl.shaderSource(s,source);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(s));return s};
+  const v=compile(gl.VERTEX_SHADER,'#version 300 es\nvoid main(){vec2 p=vec2((gl_VertexID<<1)&2,gl_VertexID&2);gl_Position=vec4(p*2.-1.,0.,1.);}'),f=compile(gl.FRAGMENT_SHADER,fragment),p=gl.createProgram();gl.attachShader(p,v);gl.attachShader(p,f);gl.linkProgram(p);gl.deleteShader(v);gl.deleteShader(f);if(!gl.getProgramParameter(p,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(p));return {p,locations:new Map()};
+ }
+ uniform(program,name,value){const gl=this.gl;let l=program.locations.get(name);if(l===undefined){l=gl.getUniformLocation(program.p,name);program.locations.set(name,l)}if(l===null)return;if(Array.isArray(value))gl.uniform2fv(l,value);else gl.uniform1f(l,value)}
+ integer(program,name,value){let l=program.locations.get(name);if(l===undefined){l=this.gl.getUniformLocation(program.p,name);program.locations.set(name,l)}if(l!==null)this.gl.uniform1i(l,value)}
+ texture(){const gl=this.gl,t=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,t);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);return t}
+ target(){return {texture:this.texture(),framebuffer:this.gl.createFramebuffer()}}
+ allocate(target,w,h){const gl=this.gl;gl.bindTexture(gl.TEXTURE_2D,target.texture);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,w,h,0,gl.RGBA,gl.UNSIGNED_BYTE,null);gl.bindFramebuffer(gl.FRAMEBUFFER,target.framebuffer);gl.framebufferTexture2D(gl.FRAMEBUFFER,gl.COLOR_ATTACHMENT0,gl.TEXTURE_2D,target.texture,0);if(gl.checkFramebufferStatus(gl.FRAMEBUFFER)!==gl.FRAMEBUFFER_COMPLETE)throw Error('离屏缓冲分配失败')}
+ bind(texture,unit){const gl=this.gl;gl.activeTexture(gl.TEXTURE0+unit);gl.bindTexture(gl.TEXTURE_2D,texture)}
+ fail(message){if(this.disposed)return;this.ready=false;this.failed=message;this.canvas.hidden=true;this.onState?.(message);}
+ invalidate(){
+  if(this.disposed||!this.gl||this.lost||this.failed)return;
+  this.captureRevision++;this.ready=false;this.canvas.hidden=true;this.onState('准备底板纹理，期间保持 SVG 折射');
+  clearTimeout(this.captureTimer);if(this.captureIdle&&'cancelIdleCallback' in window)cancelIdleCallback(this.captureIdle);this.captureTimer=setTimeout(()=>{if('requestIdleCallback' in window)this.captureIdle=requestIdleCallback(()=>{this.captureIdle=0;this.capture()},{timeout:1000});else this.capture()},140);
+ }
+ async capture(){
+  const revision=this.captureRevision,start=performance.now();
+  try{
+   await document.fonts.ready;
+   if(revision!==this.captureRevision)return;
+   const rect=this.scene.getBoundingClientRect(),W=Math.round(rect.width),H=Math.ceil(Math.max(this.scene.scrollHeight,rect.height)),dpr=devicePixelRatio||1;
+   const pixelW=Math.ceil(W*dpr),pixelH=Math.ceil(H*dpr);
+   if(!W||!H||pixelW>this.maxTexture||pixelH>this.maxTexture||pixelW*pixelH*4>128*1024*1024)throw Error('底板超出纹理预算，保持 SVG 折射');
+   const clone=this.scene.cloneNode(true),original=[this.scene,...this.scene.querySelectorAll('*')],copied=[clone,...clone.querySelectorAll('*')];
+   for(let i=0;i<original.length;i++){
+    const computed=getComputedStyle(original[i]);
+    copied[i].style.cssText=Array.from(computed,key=>key+':'+computed.getPropertyValue(key)+';').join('');
+    copied[i].style.animation='none';copied[i].style.transition='none';copied[i].removeAttribute('id');
+   }
+   clone.style.margin='0';clone.style.width=W+'px';clone.style.height=H+'px';clone.style.position='relative';clone.style.transform='none';
+   const xml=new XMLSerializer().serializeToString(clone);
+   const svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+pixelW+'" height="'+pixelH+'" viewBox="0 0 '+W+' '+H+'"><foreignObject width="100%" height="100%">'+xml+'</foreignObject></svg>';
+   const image=new Image();image.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);await image.decode();
+   if(revision!==this.captureRevision||this.lost)return;
+   const gl=this.gl;gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL,true);gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,this.sceneTexture);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,image);
+   if(gl.getError()!==gl.NO_ERROR)throw Error('底板纹理上传失败，保持 SVG 折射');
+   this.snapshot=image;this.sceneSize=[W,H];this.sceneOrigin=[rect.left+scrollX,rect.top+scrollY];this.captureTime=performance.now()-start;this.captureCount++;this.uploads++;this.ready=true;this.failed=null;if(this.active)this.draw();this.onState('WebGL2 · 缓存底板，连续折射');this.requestFrame();
+  }catch(error){this.fail(error.message)}
+ }
+ mapChanged(){this.revision++;this.requestFrame()}
+ setActive(active,animate=false){const entering=active&&!this.active;this.active=active;if(animate)this.animateUntil=performance.now()+760;this.canvas.hidden=!active||!this.ready;if(active){if(entering&&this.ready){try{this.draw()}catch(error){this.fail(error.message)}}this.requestFrame()}else{cancelAnimationFrame(this.frame);this.frame=0}}
+ requestFrame(){if(this.active&&this.ready&&!this.frame&&!this.lost)this.frame=requestAnimationFrame(()=>{this.frame=0;try{this.draw()}catch(e){this.fail(e.message)}if(performance.now()<(this.animateUntil||0))this.requestFrame()})}
+ kernel(sigma){if(this.kernels.has(sigma))return this.kernels.get(sigma);if(sigma<.05)return {center:1,count:0,weights:new Float32Array(256),offsets:new Float32Array(256)};const radius=Math.ceil(sigma*3);if(radius>510)throw Error('模糊核超出预算，保持 SVG 折射');let sum=1;const values=[1];for(let i=1;i<=radius;i++){values[i]=Math.exp(-.5*i*i/(sigma*sigma));sum+=2*values[i]}const weights=new Float32Array(256),offsets=new Float32Array(256);let count=0;for(let i=1;i<=radius;i+=2){const a=values[i],b=values[i+1]||0;weights[count]=(a+b)/sum;offsets[count]=(i*a+(i+1)*b)/(a+b);count++}const result={center:1/sum,count,weights,offsets};if(this.kernels.size>16)this.kernels.clear();this.kernels.set(sigma,result);return result}
+ applyKernel(sigma){const gl=this.gl,k=this.kernel(sigma);this.uniform(this.blur,'u_center',k.center);this.integer(this.blur,'u_count',k.count);gl.uniform1fv(gl.getUniformLocation(this.blur.p,'u_weight[0]'),k.weights);gl.uniform1fv(gl.getUniformLocation(this.blur.p,'u_offset[0]'),k.offsets)}
+ draw(){
+  if(!this.ready||!this.active)return;
+  const gl=this.gl,p=this.getParams(),rect=this.sheet.getBoundingClientRect(),W=this.mapCanvas.width,H=this.mapCanvas.height,dpr=devicePixelRatio||1;
+  if(!W||!H)return;
+  const w=Math.round(W*dpr),h=Math.round(H*dpr),ratio=[w/W,h/H],padding=p.blur>0?Math.ceil(p.blur*3*Math.max(...ratio))+2:0,fw=w+padding*2,fh=h+padding*2;
+  if(fw>this.maxTexture||fh>this.maxTexture)throw Error('面板超出 GPU 尺寸限制，保持 SVG 折射');
+  const sizeKey=[w,h,padding].join(':');if(this.sizeKey!==sizeKey){this.canvas.width=w;this.canvas.height=h;this.allocate(this.a,fw,fh);this.allocate(this.b,fw,fh);this.sizeKey=sizeKey}
+  this.pollGpuTime();let query=null;if(this.timerExt&&this.frames%20===0&&this.queries.length<4){query=gl.createQuery();gl.beginQuery(this.timerExt.TIME_ELAPSED_EXT,query)}
+  gl.bindVertexArray(this.vao);gl.disable(gl.BLEND);gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL,true);
+  if(this.mapRevision!==this.revision){gl.activeTexture(gl.TEXTURE1);gl.bindTexture(gl.TEXTURE_2D,this.mapTexture);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,this.mapCanvas);this.mapRevision=this.revision;this.uploads++}
+  gl.useProgram(this.refract.p);this.bind(this.sceneTexture,0);this.bind(this.mapTexture,1);this.integer(this.refract,'u_scene',0);this.integer(this.refract,'u_map',1);
+  this.uniform(this.refract,'u_output',[fw,fh]);this.uniform(this.refract,'u_ratio',ratio);this.uniform(this.refract,'u_pane',[W,H]);this.uniform(this.refract,'u_origin',[rect.left+scrollX-this.sceneOrigin[0],rect.top+scrollY-this.sceneOrigin[1]]);this.uniform(this.refract,'u_sceneSize',this.sceneSize);this.uniform(this.refract,'u_padding',padding);this.uniform(this.refract,'u_scale',this.getScale()*p.refraction);this.uniform(this.refract,'u_saturation',p.blur>0?1:p.saturation/100);
+  gl.bindFramebuffer(gl.FRAMEBUFFER,p.blur>0?this.a.framebuffer:null);gl.viewport(0,0,fw,fh);gl.drawArrays(gl.TRIANGLES,0,3);
+  if(p.blur>0){
+   gl.useProgram(this.blur.p);this.integer(this.blur,'u_image',0);this.uniform(this.blur,'u_inputSize',[fw,fh]);this.uniform(this.blur,'u_axis',[1/fw,0]);this.uniform(this.blur,'u_padding',0);this.uniform(this.blur,'u_saturation',1);this.applyKernel(p.blur*ratio[0]);this.bind(this.a.texture,0);gl.bindFramebuffer(gl.FRAMEBUFFER,this.b.framebuffer);gl.viewport(0,0,fw,fh);gl.drawArrays(gl.TRIANGLES,0,3);
+   this.uniform(this.blur,'u_axis',[0,1/fh]);this.uniform(this.blur,'u_padding',padding);this.uniform(this.blur,'u_saturation',p.saturation/100);this.applyKernel(p.blur*ratio[1]);this.bind(this.b.texture,0);gl.bindFramebuffer(gl.FRAMEBUFFER,null);gl.viewport(0,0,w,h);gl.drawArrays(gl.TRIANGLES,0,3);
+  }
+  if(query){gl.endQuery(this.timerExt.TIME_ELAPSED_EXT);this.queries.push(query)}
+  this.canvas.hidden=false;this.frames++;
+ }
+ pollGpuTime(){const gl=this.gl;if(!this.timerExt)return;const disjoint=gl.getParameter(this.timerExt.GPU_DISJOINT_EXT);while(this.queries.length&&gl.getQueryParameter(this.queries[0],gl.QUERY_RESULT_AVAILABLE)){const q=this.queries.shift(),ns=gl.getQueryParameter(q,gl.QUERY_RESULT);gl.deleteQuery(q);if(!disjoint){this.gpuTimes.push(ns/1e6);if(this.gpuTimes.length>120)this.gpuTimes.shift()}}}
+ destroy(){
+  if(this.disposed)return;this.disposed=true;this.active=false;this.ready=false;this.captureRevision++;
+  clearTimeout(this.captureTimer);if(this.captureIdle&&'cancelIdleCallback' in window)cancelIdleCallback(this.captureIdle);cancelAnimationFrame(this.frame);this.frame=0;
+  this.resizeObserver?.disconnect();this.mutationObserver?.disconnect();window.removeEventListener('scroll',this.onScroll);window.removeEventListener('resize',this.onResize);document.fonts?.removeEventListener('loadingdone',this.onFonts);
+  const gl=this.gl;if(gl&&!this.lost){for(const q of this.queries||[])gl.deleteQuery(q);for(const t of [this.sceneTexture,this.mapTexture,this.a?.texture,this.b?.texture])if(t)gl.deleteTexture(t);for(const f of [this.a?.framebuffer,this.b?.framebuffer])if(f)gl.deleteFramebuffer(f);for(const p of [this.refract?.p,this.blur?.p])if(p)gl.deleteProgram(p);if(this.vao)gl.deleteVertexArray(this.vao);gl.getExtension('WEBGL_lose_context')?.loseContext()}
+  this.snapshot=null;this.canvas.remove();
+ }
+ diagnostics(){const times=[...(this.gpuTimes||[])].sort((a,b)=>a-b);return {ready:this.ready,failed:this.failed||null,sceneSize:this.sceneSize,canvas:[this.canvas.width,this.canvas.height],captureCount:this.captureCount,captureMs:Math.round(this.captureTime),draws:this.frames,textureUploads:this.uploads,dpr:devicePixelRatio,maxTexture:this.maxTexture,gpuTimer:!!this.timerExt,gpuSamples:times.length,gpuMedianMs:times.length?+times[Math.floor(times.length*.5)].toFixed(3):null,gpuP95Ms:times.length?+times[Math.min(times.length-1,Math.floor(times.length*.95))].toFixed(3):null}}
+}
+
+
+
+'use strict';
+// Adapted from xiaofangstudio/liquid-glass-web and Shu Ding's liquid-glass (MIT).
+// The displacement map refracts the actual page behind the sheet; text inside stays sharp.
+const sheet=document.querySelector('#profile'),glass=document.querySelector('#glass'),finish=document.querySelector('#glass-finish'),openButton=document.querySelector('#open'),openHandle=document.querySelector('#swipe-open'),closeButton=document.querySelector('#close');
+let opened=false,previousFocus=null,gpuRenderer=null;
+// v2 requires explicit opt-in: the old automatic cache missed native selection and other paint state.
+let enginePreference='svg';try{if(localStorage.getItem('between-render-acceptance-v1')==='auto')enginePreference='auto'}catch{}
+function setOpen(value){if(value===opened)return;opened=value;if(value)previousFocus=document.activeElement;sheet.inert=!value;sheet.setAttribute('aria-hidden',String(!value));sheet.classList.toggle('is-open',value);document.body.dataset.open=String(value);[openButton,openHandle].forEach(el=>el.setAttribute('aria-expanded',String(value)));if(value){requestAnimationFrame(()=>{if(opened)closeButton.focus({preventScroll:true})})}else{(previousFocus instanceof HTMLElement&&previousFocus!==document.body?previousFocus:openButton).focus({preventScroll:true})}}
+closeButton.addEventListener('click',()=>setOpen(false));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&opened)setOpen(false)});
+document.addEventListener('click',e=>{if(opened&&!sheet.contains(e.target)&&!e.target.closest('.invitation,.tuner,.tuner-toggle,#swipe-edge,#acceptance,#test-scene'))setOpen(false)});
+// Gesture endpoints toggle state. The sheet never follows a pointer or stays halfway open.
+function bindSwipe(el,direction,onClick){let start=null,moved=false;el.addEventListener('pointerdown',e=>{if(!e.isPrimary||e.button!==0)return;start={x:e.clientX,y:e.clientY,id:e.pointerId};moved=false;el.setPointerCapture(e.pointerId)});el.addEventListener('pointermove',e=>{if(start&&Math.hypot(e.clientX-start.x,e.clientY-start.y)>10)moved=true});el.addEventListener('pointerup',e=>{if(!start)return;const dy=e.clientY-start.y,dx=e.clientX-start.x;start=null;if(dy*direction>38&&Math.abs(dy)>Math.abs(dx)*1.2)setOpen(direction<0);});el.addEventListener('pointercancel',()=>{start=null;moved=true});el.addEventListener('click',e=>{if(moved&&e.detail!==0){e.preventDefault();return}onClick()})}
+bindSwipe(openHandle,-1,()=>setOpen(true));bindSwipe(document.querySelector('#swipe-close'),1,()=>setOpen(false));
+const edge=document.querySelector('#swipe-edge');bindSwipe(edge,-1,()=>{});bindSwipe(openButton,-1,()=>setOpen(true));
+function smoothStep(a,b,t){t=Math.max(0,Math.min(1,(t-a)/(b-a)));return t*t*(3-2*t)}
+function sdf(x,y,w,h,r){const qx=Math.abs(x)-w+r,qy=Math.abs(y)-h+r;return Math.min(Math.max(qx,qy),0)+Math.hypot(Math.max(qx,0),Math.max(qy,0))-r}
+const filter=document.querySelector('#liquid-refraction'),map=filter.querySelector('feImage'),disp=filter.querySelector('feDisplacementMap'),canvas=document.createElement('canvas'),ctx=canvas.getContext('2d');
+
+const defaults={refraction:1,edge:32,blur:2,transparency:32,radius:34,saturation:116,highlight:75,shadow:16,tint:'#f7faef'};
+const specs=[
+ ['refraction','折射强度',0,3,.05,v=>v.toFixed(2)+'×'],
+ ['edge','折射边缘宽度',4,100,1,v=>v+' px'],
+ ['blur','背景模糊',0,24,.25,v=>v.toFixed(2)+' px'],
+ ['transparency','玻璃透明度',0,100,1,v=>v+'%'],
+ ['radius','面板圆角',0,80,1,v=>v+' px'],
+ ['saturation','背景饱和度',0,200,1,v=>v+'%'],
+ ['highlight','边缘高光',0,100,1,v=>v+'%'],
+ ['shadow','投影深度',0,50,1,v=>v+'%']
+];
+let params={...defaults};
+try{const saved=JSON.parse(localStorage.getItem('between-glass-acceptance-v1'));if(saved&&typeof saved==='object'){for(const [key,,min,max] of specs){if(typeof saved[key]==='number'&&Number.isFinite(saved[key]))params[key]=Math.min(max,Math.max(min,saved[key]))}if(/^#[0-9a-f]{6}$/i.test(saved.tint))params.tint=saved.tint}}catch{}
+const tuner=document.querySelector('#tuner'),toggle=document.querySelector('#tuner-toggle'),sliders=document.querySelector('#tuner-sliders');
+for(const [key,label,min,max,step,format] of specs){const row=document.createElement('label');row.className='tuning-row';row.htmlFor='param-'+key;row.innerHTML='<span class="tuning-label"><span>'+label+'</span><output id="value-'+key+'" for="param-'+key+'"></output></span><input type="range" id="param-'+key+'" min="'+min+'" max="'+max+'" step="'+step+'" value="'+params[key]+'">';sliders.append(row);row.querySelector('input').addEventListener('input',e=>{params[key]=Number(e.target.value);syncControls();scheduleAppearance();saveParams()})}
+function syncControls(){for(const [key,,,,,format] of specs){document.querySelector('#param-'+key).value=params[key];document.querySelector('#value-'+key).value=format(params[key])}document.querySelector('#tint').value=params.tint}
+function saveParams(){try{localStorage.setItem('between-glass-acceptance-v1',JSON.stringify(params))}catch{document.querySelector('#tuner-help').textContent='拖动即生效；当前浏览器无法保存参数，刷新后恢复默认。'}}
+toggle.addEventListener('click',()=>{tuner.hidden=!tuner.hidden;toggle.setAttribute('aria-expanded',String(!tuner.hidden))});
+tuner.addEventListener('keydown',e=>{if(e.key==='Escape'){e.stopPropagation();tuner.hidden=true;toggle.setAttribute('aria-expanded','false');toggle.focus()}});
+document.querySelector('#tint').addEventListener('input',e=>{params.tint=e.target.value;scheduleAppearance();saveParams()});
+document.querySelector('#preview-sheet').addEventListener('click',()=>setOpen(!opened));
+const originalSetOpen=setOpen;setOpen=function(value){if(value===opened)return;transitioning=true;clearTimeout(transitionTimer);originalSetOpen(value);if(value){updateGlass();disp.setAttribute('scale',String(baseScale*params.refraction))}refreshBackdrop();gpuRenderer?.setActive((opened||transitioning)&&enginePreference!=='svg',true);transitionTimer=setTimeout(finishTransition,matchMedia('(prefers-reduced-motion:reduce)').matches?0:720);document.querySelector('#preview-sheet').textContent=opened?'收起玻璃':'展开玻璃'};
+document.querySelector('#reset-glass').addEventListener('click',()=>{params={...defaults};syncControls();scheduleAppearance();saveParams()});
+const chromium=/Chrome|Chromium|Edg\//.test(navigator.userAgent),supportsRefraction=chromium&&CSS.supports('backdrop-filter','url(#liquid-refraction)');
+document.documentElement.dataset.refraction=supportsRefraction?'svg':'blur';
+
+
+// The optical layer reads the live backdrop; the finish layer holds static tint, rim and shadows.
+// Keep full refraction during scrolling and panel transitions.
+// Only disable the filter after the panel has completely left the viewport.
+let transitioning=false,transitionTimer=0,lastBackdrop='';
+function refreshBackdrop(){
+ const active=opened||transitioning,refract=supportsRefraction&&params.refraction>0;
+ const gpu=active&&enginePreference!=='svg'&&gpuRenderer?.ready;
+ const backdrop=active&&!gpu?(refract?'url(#liquid-refraction) ':'')+'blur('+params.blur+'px) saturate('+params.saturation/100+')':'none';
+ if(backdrop!==lastBackdrop){lastBackdrop=backdrop;glass.style.backdropFilter=backdrop;glass.style.webkitBackdropFilter=backdrop}
+ glass.dataset.renderMode=!active?'hidden':gpu?'webgl2':refract?'refraction':'blur';
+ gpuRenderer?.setActive(active&&enginePreference!=='svg');
+}
+function finishTransition(){clearTimeout(transitionTimer);transitioning=false;refreshBackdrop()}
+sheet.addEventListener('transitionend',e=>{if(e.target===sheet&&e.propertyName==='transform')finishTransition()});
+let lastMap='',baseScale=1,appearanceFrame=0,warmupPending=false;
+function warmupGlass(){if(warmupPending)return;warmupPending=true;const run=()=>{warmupPending=false;updateGlass();disp.setAttribute('scale',String(baseScale*params.refraction))};if('requestIdleCallback' in window)requestIdleCallback(run,{timeout:800});else setTimeout(run,120)}
+
+function scheduleAppearance(){if(!appearanceFrame)appearanceFrame=requestAnimationFrame(()=>{appearanceFrame=0;applyAppearance()})}
+function applyAppearance(){
+ sheet.style.borderRadius=params.radius+'px';
+ const rgb=params.tint.match(/[0-9a-f]{2}/gi).map(x=>parseInt(x,16)).join(','),alpha=1-params.transparency/100,light=params.highlight/100;
+ finish.style.background='linear-gradient(130deg,rgba('+rgb+','+alpha*.66+'),rgba('+rgb+','+alpha+') 25%,rgba('+rgb+','+Math.min(1,alpha*1.06)+') 72%,rgba('+rgb+','+alpha*.66+'))';
+ finish.style.borderColor='rgba(255,255,255,'+light*.9+')';
+ finish.style.setProperty('--glass-highlight',light);
+ finish.style.boxShadow='inset 0 1px 1px rgba(255,255,255,'+light+'),inset 1px 0 1px rgba(255,255,255,'+light*.85+'),inset -1px -1px 2px rgba(255,255,255,'+light*.8+'),0 18px 70px rgba(54,76,48,'+params.shadow/100+'),0 2px 8px rgba(54,76,48,'+params.shadow/200+')';
+ if(opened){updateGlass();disp.setAttribute('scale',String(baseScale*params.refraction))}
+ refreshBackdrop();gpuRenderer?.requestFrame(); if(!opened)warmupGlass();
+}
+function updateGlass(){
+ const W=Math.round(glass.offsetWidth),H=Math.round(glass.offsetHeight),signature=[W,H,params.radius,params.edge].join(':');
+ if(!W||!H||lastMap===signature)return;lastMap=signature;canvas.width=W;canvas.height=H;filter.setAttribute('width',W);filter.setAttribute('height',H);map.setAttribute('width',W);map.setAttribute('height',H);
+ const data=ctx.createImageData(W,H),raw=new Float32Array(W*H*2),radius=Math.min(params.radius,W/2,H/2),edge=params.edge;
+ let maximum=0;
+ for(let y=0;y<H;y++){for(let x=0;x<W;x++){const ix=x-W/2,iy=y-H/2,d=sdf(ix,iy,W/2,H/2,radius),weight=smoothStep(-edge,0,d),length=Math.hypot(ix/(W/H),iy)||1,dx=ix/(W/H)/length*weight*23,dy=iy/length*weight*23,k=(y*W+x)*2;raw[k]=dx;raw[k+1]=dy;maximum=Math.max(maximum,Math.abs(dx),Math.abs(dy))}}
+ baseScale=Math.max(1,maximum*2);
+ for(let k=0;k<W*H;k++){data.data[k*4]=Math.round((raw[k*2]/baseScale+.5)*255);data.data[k*4+1]=Math.round((raw[k*2+1]/baseScale+.5)*255);data.data[k*4+2]=128;data.data[k*4+3]=255}
+ ctx.putImageData(data,0,0);map.setAttribute('href',canvas.toDataURL());gpuRenderer?.mapChanged();
+}
+syncControls();new ResizeObserver(scheduleAppearance).observe(glass);applyAppearance();
+const engineSelect=document.querySelector('#engine'),engineStatus=document.querySelector('#engine-status');
+engineSelect.value=enginePreference==='svg'?'svg':'auto';
+function engineState(message){for(const key of ['refraction','edge'])document.querySelector('#param-'+key).disabled=!(supportsRefraction||gpuRenderer?.ready);engineStatus.textContent=enginePreference==='svg'?(supportsRefraction?'实时页面 · 保留文字选中与动态变化；滚动持续折射。':'当前浏览器不支持 SVG 背景折射，仅支持实时模糊，请使用 Chrome / Edge。'):'实验模式：不包含文字选中、悬停和动画状态。'+message;document.documentElement.dataset.engine=enginePreference!=='svg'&&gpuRenderer?.ready?'webgl2':'svg';refreshBackdrop();gpuRenderer?.requestFrame()}
+function ensureCachedRenderer(){if(!gpuRenderer&&enginePreference!=='svg')gpuRenderer=new CachedGlass({sheet,scene:document.querySelector('#scene'),mapCanvas:canvas,getParams:()=>params,getScale:()=>baseScale,onState:engineState})}
+ensureCachedRenderer();engineState('准备静态纹理');
+engineSelect.addEventListener('change',()=>{enginePreference=engineSelect.value;try{localStorage.setItem('between-render-acceptance-v1',enginePreference)}catch{}if(enginePreference==='svg'&&gpuRenderer){gpuRenderer.destroy();gpuRenderer=null}ensureCachedRenderer();engineState(gpuRenderer?.ready?'WebGL2 · 缓存底板，连续折射':gpuRenderer?.failed||'准备底板纹理，期间保持 SVG 折射')});
+
+const parameterFileStatus=document.querySelector('#parameter-file-status'),parameterFile=document.querySelector('#params-file');
+document.querySelector('#export-params').addEventListener('click',()=>{const url=URL.createObjectURL(new Blob([JSON.stringify({version:1,appearance:params},null,2)],{type:'application/json'})),link=document.createElement('a');link.href=url;link.download='between-glass-parameters.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);parameterFileStatus.textContent='已导出当前外观，可用于备份或对照测试。'});
+document.querySelector('#import-params').addEventListener('click',()=>parameterFile.click());
+parameterFile.addEventListener('change',async()=>{try{const file=parameterFile.files[0];if(!file)return;if(file.size>16384)throw Error('参数文件过大');const json=JSON.parse(await file.text()),value=json.appearance||json;for(const [key,,min,max] of specs){if(typeof value[key]!=='number'||!Number.isFinite(value[key])||value[key]<min||value[key]>max)throw Error('参数格式或范围无效：'+key)}if(!/^#[0-9a-f]{6}$/i.test(value.tint))throw Error('底色格式无效');params=Object.fromEntries(Object.keys(defaults).map(key=>[key,value[key]]));syncControls();scheduleAppearance();saveParams();parameterFileStatus.textContent='已导入外观参数。'}catch(error){parameterFileStatus.textContent='导入失败：'+error.message}finally{parameterFile.value=''}});
+
+</script>
+<script>
+(() => {
+ const panel=document.createElement('aside');panel.id='acceptance';panel.style.cssText='position:fixed;z-index:100;left:12px;top:12px;padding:12px;background:#fffef9;border:1px solid #bdc7b4;border-radius:12px;font:11px Arial;max-width:310px';
+ panel.innerHTML='<b>实时终版 · 独立参数验收</b><p><select id="test-preset"><option value="default">默认外观</option><option value="clear">透明 / 无模糊 / 强折射</option><option value="blur">透明 / 24px模糊 / 强折射</option><option value="square">方角 / 宽边缘 / 强折射</option></select></p><p><button id="test-open">展开 / 收起</button> <button id="test-animation">暂停动画</button> <button id="test-resource">检查资源</button></p><p id="test-selection">选区：无</p><pre id="test-result" style="white-space:pre-wrap;max-height:100px;overflow:auto"></pre>';
+ document.body.append(panel);panel.addEventListener('click',e=>e.stopPropagation());
+ const fixture=document.createElement('section');fixture.id='test-scene';fixture.style.cssText='min-height:1250px;padding:220px 20px 40px;background:repeating-linear-gradient(90deg,#fff 0 9px,#dde9ee 9px 10px);font:20px/2 Arial;color:#123';
+ fixture.innerHTML='<p style="margin-left:120px">真实背景文字：选中我，再展开玻璃。</p><label style="display:block;margin-top:60px">原生光标 <input id="test-input" value="修改这里，观察光标和选中状态" style="width:300px;max-width:75%;font:18px Arial"></label><p><button id="test-mutate">更新底板文字</button><span id="test-copy">第一次内容</span></p><div style="margin-left:130px;display:flex;gap:10px"><div id="test-css" style="width:100px;height:80px;background:#e65c3e;animation:test-slide 1.3s infinite alternate linear"></div><canvas id="test-canvas" width="220" height="90" style="width:220px;height:90px"></canvas></div><p style="font-size:32px;margin-left:180px">IIIIIIII WWWWW 0123456789</p><p style="margin-left:160px">高对比文字用于观察折射连续性。<br>高对比文字用于观察折射连续性。</p><style>@keyframes test-slide{to{transform:translateX(90px)}}#test-mutate:hover{background:#234;color:white}</style>';
+ document.querySelector('#scene').prepend(fixture);
+ let frame=0,paused=false,disposed=null;
+ const cx=fixture.querySelector('canvas').getContext('2d');
+ function animate(t){cx.fillStyle='#f8e6bd';cx.fillRect(0,0,220,90);cx.fillStyle='#1359d4';cx.fillRect((Math.sin(t/500)+1)*70,5,65,80);frame=requestAnimationFrame(animate)}frame=requestAnimationFrame(animate);
+ const originalDestroy=CachedGlass.prototype.destroy;CachedGlass.prototype.destroy=function(){originalDestroy.call(this);disposed=this};
+ const inspect=()=>document.querySelector('#test-result').textContent=JSON.stringify({mode:glass.dataset.renderMode,canvases:sheet.querySelectorAll('.gpu-glass').length,current:gpuRenderer?.diagnostics()||null,released:disposed?{disposed:disposed.disposed,active:disposed.active,ready:disposed.ready,frame:disposed.frame,captures:disposed.captureCount,contextLost:disposed.gl?.isContextLost()}:null},null,2);
+ panel.querySelector('#test-resource').onclick=inspect;
+ panel.querySelector('#test-open').onclick=()=>setOpen(!opened);
+ panel.querySelector('#test-animation').onclick=()=>{paused=!paused;fixture.querySelector('#test-css').style.animationPlayState=paused?'paused':'running';if(paused)cancelAnimationFrame(frame);else frame=requestAnimationFrame(animate)};
+ fixture.querySelector('#test-mutate').onclick=()=>fixture.querySelector('#test-copy').textContent='已更新 '+Date.now();
+ panel.querySelector('#test-preset').onchange=e=>{params={...defaults};if(e.target.value!=='default')Object.assign(params,{transparency:100,refraction:3,blur:e.target.value==='blur'?24:0});if(e.target.value==='square')Object.assign(params,{radius:0,edge:100,saturation:200});syncControls();scheduleAppearance()};
+ document.addEventListener('selectionchange',()=>{const s=document.getSelection();panel.querySelector('#test-selection').textContent='选区：'+(s.toString().slice(0,45)||'无')});
+ document.querySelector('#engine').addEventListener('change',inspect);
+})();
+
+</script></body>
+</html>

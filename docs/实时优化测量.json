@@ -1,0 +1,2170 @@
+{
+  "date": "2026-10-21",
+  "metric": "rAF scheduling intervals, NOT presented-frame FPS",
+  "presentedFPSVerified": false,
+  "viewportDesktop": [
+    1280,
+    720,
+    2
+  ],
+  "baselineOpticalImplementation": "6703fb7; live native refraction; no snapshot renderer initialized",
+  "labSha256": "95c1d73d2f2342f94ac2def5ce213addf7df9f1b400161c9d91e5e3c718f346f",
+  "notes": [
+    "All are controlled scroll, not natural wheel/touch presentation traces.",
+    "Summary includes unclipped finish batches 1, 2 and 4 only, matching the final static-finish setting. Optical-layer clipping remains unchanged.",
+    "Batch 3 and mobile test used the separate clipped-finish variant; retained in raw data, excluded from the final desktop summary.",
+    "Graphics probe was taken between measurements and its context immediately released.",
+    "A viewport-target mismatch was caught before mobile acceptance; that incomplete attempt was stopped and excluded.",
+    "No screenshots, other live tests or GPU probes were intentionally performed during accepted measurement intervals.",
+    "Raw scheduling intervals do not attribute a GPU bottleneck or prove 120 Hz presentation."
+  ],
+  "desktopFinishSummary": {
+    "full": {
+      "runs": 9,
+      "secondsPerRun": 6,
+      "medianCallbacks": 545,
+      "medianP50ms": 8.400000000000091,
+      "medianP95ms": 16.79999999998836,
+      "medianP99ms": 25,
+      "totalIntervals": 4557,
+      "intervalsOver20ms": 231,
+      "medianIntervalsOver20msPerRun": 15,
+      "over20msFraction": 0.05069124423963134
+    },
+    "finish": {
+      "runs": 9,
+      "secondsPerRun": 6,
+      "medianCallbacks": 564,
+      "medianP50ms": 8.399999999997817,
+      "medianP95ms": 16.70000000001164,
+      "medianP99ms": 16.89999999999418,
+      "totalIntervals": 4806,
+      "intervalsOver20ms": 168,
+      "medianIntervalsOver20msPerRun": 6,
+      "over20msFraction": 0.03495630461922597
+    }
+  },
+  "runSets": {
+    "partition_first": [
+      {
+        "route": "partition",
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 194,
+        "p50": 33.30000000000291,
+        "p95": 41.69999999999709,
+        "p99": 41.80000000000291,
+        "over12": 172,
+        "over20": 172,
+        "longTasks": 0,
+        "modes": [
+          "partition"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "full",
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 545,
+        "p50": 8.400000000008731,
+        "p95": 16.70000000001164,
+        "p99": 16.89999999999418,
+        "over12": 171,
+        "over20": 4,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      }
+    ],
+    "partition_interleaved": [
+      {
+        "route": "full",
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 539,
+        "p50": 8.400000000000091,
+        "p95": 16.700000000000728,
+        "p99": 24.899999999999636,
+        "over12": 171,
+        "over20": 9,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "partition",
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 195,
+        "p50": 33.30000000000109,
+        "p95": 41.69999999999891,
+        "p99": 41.70000000000073,
+        "over12": 173,
+        "over20": 171,
+        "longTasks": 0,
+        "modes": [
+          "partition"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "partition",
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 187,
+        "p50": 33.30000000000291,
+        "p95": 41.70000000000073,
+        "p99": 41.79999999999927,
+        "over12": 169,
+        "over20": 168,
+        "longTasks": 0,
+        "modes": [
+          "partition"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "full",
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 533,
+        "p50": 8.399999999997817,
+        "p95": 16.700000000000728,
+        "p99": 16.80000000000291,
+        "over12": 185,
+        "over20": 3,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "full",
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 564,
+        "p50": 8.399999999997817,
+        "p95": 16.700000000000728,
+        "p99": 25,
+        "over12": 145,
+        "over20": 11,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "partition",
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 193,
+        "p50": 33.30000000000291,
+        "p95": 41.69999999999709,
+        "p99": 41.799999999995634,
+        "over12": 174,
+        "over20": 173,
+        "longTasks": 0,
+        "modes": [
+          "partition"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      }
+    ],
+    "combined_interleaved": [
+      {
+        "route": "full",
+        "valid": true,
+        "scrollRange": 433,
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "htmlInCanvas": false,
+          "renderer": "ANGLE (Intel, Intel(R) Arc(TM) Graphics (0x00007D55) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 555,
+        "p50": 8.400000000000091,
+        "p95": 16.700000000000728,
+        "p99": 24.90000000000009,
+        "over12": 156,
+        "over20": 9,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "combined",
+        "valid": true,
+        "scrollRange": 433,
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "htmlInCanvas": false,
+          "renderer": "ANGLE (Intel, Intel(R) Arc(TM) Graphics (0x00007D55) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 567,
+        "p50": 8.399999999999636,
+        "p95": 16.700000000000728,
+        "p99": 16.80000000000109,
+        "over12": 149,
+        "over20": 5,
+        "longTasks": 0,
+        "modes": [
+          "combined"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "combined",
+        "valid": true,
+        "scrollRange": 433,
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "htmlInCanvas": false,
+          "renderer": "ANGLE (Intel, Intel(R) Arc(TM) Graphics (0x00007D55) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 580,
+        "p50": 8.399999999997817,
+        "p95": 16.700000000000728,
+        "p99": 24.599999999998545,
+        "over12": 133,
+        "over20": 7,
+        "longTasks": 0,
+        "modes": [
+          "combined"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "full",
+        "valid": true,
+        "scrollRange": 433,
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "htmlInCanvas": false,
+          "renderer": "ANGLE (Intel, Intel(R) Arc(TM) Graphics (0x00007D55) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 575,
+        "p50": 8.399999999997817,
+        "p95": 16.700000000000728,
+        "p99": 24.900000000001455,
+        "over12": 135,
+        "over20": 10,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "full",
+        "valid": true,
+        "scrollRange": 433,
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "htmlInCanvas": false,
+          "renderer": "ANGLE (Intel, Intel(R) Arc(TM) Graphics (0x00007D55) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 567,
+        "p50": 8.400000000001455,
+        "p95": 16.700000000004366,
+        "p99": 16.899999999997817,
+        "over12": 150,
+        "over20": 5,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "combined",
+        "valid": true,
+        "scrollRange": 433,
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "htmlInCanvas": false,
+          "renderer": "ANGLE (Intel, Intel(R) Arc(TM) Graphics (0x00007D55) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 534,
+        "p50": 8.400000000001455,
+        "p95": 16.700000000004366,
+        "p99": 24.900000000001455,
+        "over12": 177,
+        "over20": 9,
+        "longTasks": 0,
+        "modes": [
+          "combined"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      }
+    ],
+    "layout_interleaved": [
+      {
+        "route": "full",
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 511,
+        "p50": 8.400000000000091,
+        "p95": 16.800000000000182,
+        "p99": 25,
+        "over12": 185,
+        "over20": 23,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "layout",
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 541,
+        "p50": 8.399999999999636,
+        "p95": 16.799999999999272,
+        "p99": 25,
+        "over12": 164,
+        "over20": 15,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "layout",
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 548,
+        "p50": 8.399999999999636,
+        "p95": 16.700000000000728,
+        "p99": 17,
+        "over12": 167,
+        "over20": 6,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "full",
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 522,
+        "p50": 8.400000000001455,
+        "p95": 16.799999999999272,
+        "p99": 25,
+        "over12": 178,
+        "over20": 19,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "full",
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 521,
+        "p50": 8.400000000001455,
+        "p95": 16.799999999999272,
+        "p99": 25,
+        "over12": 181,
+        "over20": 18,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "layout",
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 531,
+        "p50": 8.400000000001455,
+        "p95": 16.799999999995634,
+        "p99": 25,
+        "over12": 178,
+        "over20": 11,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      }
+    ],
+    "blur_diagnostic": [
+      {
+        "route": "blur",
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 679,
+        "p50": 8.300000000017462,
+        "p95": 16.599999999976717,
+        "p99": 16.70000000001164,
+        "over12": 40,
+        "over20": 2,
+        "longTasks": 0,
+        "modes": [
+          "diagnostic-blur"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      }
+    ],
+    "finish_round1_unclipped": [
+      {
+        "route": "full",
+        "valid": true,
+        "scrollRange": 433,
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "htmlInCanvas": false,
+          "renderer": "ANGLE (Intel, Intel(R) Arc(TM) Graphics (0x00007D55) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 538,
+        "p50": 8.400000000000091,
+        "p95": 16.700000000000728,
+        "p99": 25,
+        "over12": 167,
+        "over20": 14,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "finish",
+        "valid": true,
+        "scrollRange": 433,
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "htmlInCanvas": false,
+          "renderer": "ANGLE (Intel, Intel(R) Arc(TM) Graphics (0x00007D55) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 594,
+        "p50": 8.399999999999636,
+        "p95": 16.700000000000728,
+        "p99": 16.80000000000109,
+        "over12": 123,
+        "over20": 3,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "finish",
+        "valid": true,
+        "scrollRange": 433,
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "htmlInCanvas": false,
+          "renderer": "ANGLE (Intel, Intel(R) Arc(TM) Graphics (0x00007D55) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 599,
+        "p50": 8.399999999997817,
+        "p95": 16.700000000000728,
+        "p99": 16.799999999999272,
+        "over12": 119,
+        "over20": 2,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "full",
+        "valid": true,
+        "scrollRange": 433,
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "htmlInCanvas": false,
+          "renderer": "ANGLE (Intel, Intel(R) Arc(TM) Graphics (0x00007D55) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 545,
+        "p50": 8.399999999997817,
+        "p95": 16.700000000000728,
+        "p99": 25,
+        "over12": 163,
+        "over20": 13,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "full",
+        "valid": true,
+        "scrollRange": 433,
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "htmlInCanvas": false,
+          "renderer": "ANGLE (Intel, Intel(R) Arc(TM) Graphics (0x00007D55) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 552,
+        "p50": 8.400000000001455,
+        "p95": 16.700000000004366,
+        "p99": 25,
+        "over12": 153,
+        "over20": 15,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "finish",
+        "valid": true,
+        "scrollRange": 433,
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "htmlInCanvas": false,
+          "renderer": "ANGLE (Intel, Intel(R) Arc(TM) Graphics (0x00007D55) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 564,
+        "p50": 8.39999999999418,
+        "p95": 16.700000000004366,
+        "p99": 16.80000000000291,
+        "over12": 154,
+        "over20": 2,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      }
+    ],
+    "finish_round2_unclipped": [
+      {
+        "route": "full",
+        "valid": true,
+        "scrollRange": 433,
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "htmlInCanvas": false,
+          "renderer": "ANGLE (Intel, Intel(R) Arc(TM) Graphics (0x00007D55) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 555,
+        "p50": 8.39999999999418,
+        "p95": 16.79999999998836,
+        "p99": 25,
+        "over12": 151,
+        "over20": 15,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "finish",
+        "valid": true,
+        "scrollRange": 433,
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "htmlInCanvas": false,
+          "renderer": "ANGLE (Intel, Intel(R) Arc(TM) Graphics (0x00007D55) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 560,
+        "p50": 8.39999999999418,
+        "p95": 16.70000000001164,
+        "p99": 16.800000000017462,
+        "over12": 158,
+        "over20": 3,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "finish",
+        "valid": true,
+        "scrollRange": 433,
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "htmlInCanvas": false,
+          "renderer": "ANGLE (Intel, Intel(R) Arc(TM) Graphics (0x00007D55) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 589,
+        "p50": 8.39999999999418,
+        "p95": 16.70000000001164,
+        "p99": 16.89999999999418,
+        "over12": 125,
+        "over20": 6,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "full",
+        "valid": true,
+        "scrollRange": 433,
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "htmlInCanvas": false,
+          "renderer": "ANGLE (Intel, Intel(R) Arc(TM) Graphics (0x00007D55) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 546,
+        "p50": 8.39999999999418,
+        "p95": 16.79999999998836,
+        "p99": 25,
+        "over12": 164,
+        "over20": 10,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "full",
+        "valid": true,
+        "scrollRange": 433,
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "htmlInCanvas": false,
+          "renderer": "ANGLE (Intel, Intel(R) Arc(TM) Graphics (0x00007D55) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 561,
+        "p50": 8.39999999999418,
+        "p95": 16.70000000001164,
+        "p99": 24.89999999999418,
+        "over12": 151,
+        "over20": 9,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "finish",
+        "valid": true,
+        "scrollRange": 433,
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "htmlInCanvas": false,
+          "renderer": "ANGLE (Intel, Intel(R) Arc(TM) Graphics (0x00007D55) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 589,
+        "p50": 8.39999999999418,
+        "p95": 16.70000000001164,
+        "p99": 17,
+        "over12": 126,
+        "over20": 6,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      }
+    ],
+    "finish_round3_clip_variant": [
+      {
+        "route": "full",
+        "valid": true,
+        "scrollRange": 433,
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "htmlInCanvas": false,
+          "renderer": "ANGLE (Intel, Intel(R) Arc(TM) Graphics (0x00007D55) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 558,
+        "p50": 8.399999999999636,
+        "p95": 16.700000000000273,
+        "p99": 16.90000000000009,
+        "over12": 156,
+        "over20": 6,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "finish",
+        "valid": true,
+        "scrollRange": 433,
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "htmlInCanvas": false,
+          "renderer": "ANGLE (Intel, Intel(R) Arc(TM) Graphics (0x00007D55) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 583,
+        "p50": 8.399999999999636,
+        "p95": 16.700000000000728,
+        "p99": 16.80000000000109,
+        "over12": 134,
+        "over20": 3,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "finish",
+        "valid": true,
+        "scrollRange": 433,
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "htmlInCanvas": false,
+          "renderer": "ANGLE (Intel, Intel(R) Arc(TM) Graphics (0x00007D55) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 578,
+        "p50": 8.399999999999636,
+        "p95": 16.700000000000728,
+        "p99": 16.900000000001455,
+        "over12": 137,
+        "over20": 5,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "full",
+        "valid": true,
+        "scrollRange": 433,
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "htmlInCanvas": false,
+          "renderer": "ANGLE (Intel, Intel(R) Arc(TM) Graphics (0x00007D55) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 537,
+        "p50": 8.400000000001455,
+        "p95": 16.799999999999272,
+        "p99": 25,
+        "over12": 168,
+        "over20": 15,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "full",
+        "valid": true,
+        "scrollRange": 433,
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "htmlInCanvas": false,
+          "renderer": "ANGLE (Intel, Intel(R) Arc(TM) Graphics (0x00007D55) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 545,
+        "p50": 8.400000000001455,
+        "p95": 16.799999999995634,
+        "p99": 17,
+        "over12": 169,
+        "over20": 6,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "finish",
+        "valid": true,
+        "scrollRange": 433,
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "htmlInCanvas": false,
+          "renderer": "ANGLE (Intel, Intel(R) Arc(TM) Graphics (0x00007D55) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 575,
+        "p50": 8.39999999999418,
+        "p95": 16.700000000004366,
+        "p99": 24.89999999999418,
+        "over12": 140,
+        "over20": 7,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      }
+    ],
+    "finish_round4_final": [
+      {
+        "route": "full",
+        "valid": true,
+        "scrollRange": 433,
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "htmlInCanvas": false,
+          "renderer": "ANGLE (Intel, Intel(R) Arc(TM) Graphics (0x00007D55) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 421,
+        "p50": 16.599999999999454,
+        "p95": 25,
+        "p99": 25.100000000000364,
+        "over12": 240,
+        "over20": 55,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "finish",
+        "valid": true,
+        "scrollRange": 433,
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "htmlInCanvas": false,
+          "renderer": "ANGLE (Intel, Intel(R) Arc(TM) Graphics (0x00007D55) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 438,
+        "p50": 16.5,
+        "p95": 25,
+        "p99": 25.099999999998545,
+        "over12": 225,
+        "over20": 56,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "finish",
+        "valid": true,
+        "scrollRange": 433,
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "htmlInCanvas": false,
+          "renderer": "ANGLE (Intel, Intel(R) Arc(TM) Graphics (0x00007D55) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 436,
+        "p50": 16.5,
+        "p95": 25,
+        "p99": 25.200000000000728,
+        "over12": 234,
+        "over20": 47,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "full",
+        "valid": true,
+        "scrollRange": 433,
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "htmlInCanvas": false,
+          "renderer": "ANGLE (Intel, Intel(R) Arc(TM) Graphics (0x00007D55) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 418,
+        "p50": 16.599999999998545,
+        "p95": 25,
+        "p99": 33.29999999999927,
+        "over12": 246,
+        "over20": 50,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "full",
+        "valid": true,
+        "scrollRange": 433,
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "htmlInCanvas": false,
+          "renderer": "ANGLE (Intel, Intel(R) Arc(TM) Graphics (0x00007D55) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 421,
+        "p50": 16.599999999998545,
+        "p95": 25,
+        "p99": 25.200000000000728,
+        "over12": 246,
+        "over20": 50,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "finish",
+        "valid": true,
+        "scrollRange": 433,
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "htmlInCanvas": false,
+          "renderer": "ANGLE (Intel, Intel(R) Arc(TM) Graphics (0x00007D55) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "actualOpen": true,
+        "size": [
+          750,
+          402
+        ],
+        "viewport": [
+          1280,
+          720,
+          2
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 437,
+        "p50": 16.599999999998545,
+        "p95": 25,
+        "p99": 25.099999999998545,
+        "over12": 241,
+        "over20": 43,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      }
+    ],
+    "finish_mobile": [
+      {
+        "route": "full",
+        "valid": true,
+        "scrollRange": 598,
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "htmlInCanvas": false,
+          "renderer": "ANGLE (Intel, Intel(R) Arc(TM) Graphics (0x00007D55) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "actualOpen": true,
+        "size": [
+          355,
+          424
+        ],
+        "viewport": [
+          390,
+          844,
+          1
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 720,
+        "p50": 8.300000000000182,
+        "p95": 8.400000000000546,
+        "p99": 8.5,
+        "over12": 0,
+        "over20": 0,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "finish",
+        "valid": true,
+        "scrollRange": 598,
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "htmlInCanvas": false,
+          "renderer": "ANGLE (Intel, Intel(R) Arc(TM) Graphics (0x00007D55) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "actualOpen": true,
+        "size": [
+          355,
+          424
+        ],
+        "viewport": [
+          390,
+          844,
+          1
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 718,
+        "p50": 8.300000000001091,
+        "p95": 8.5,
+        "p99": 8.5,
+        "over12": 2,
+        "over20": 0,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "finish",
+        "valid": true,
+        "scrollRange": 598,
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "htmlInCanvas": false,
+          "renderer": "ANGLE (Intel, Intel(R) Arc(TM) Graphics (0x00007D55) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "actualOpen": true,
+        "size": [
+          355,
+          424
+        ],
+        "viewport": [
+          390,
+          844,
+          1
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 720,
+        "p50": 8.30000000000291,
+        "p95": 8.400000000001455,
+        "p99": 8.5,
+        "over12": 0,
+        "over20": 0,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "full",
+        "valid": true,
+        "scrollRange": 598,
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "htmlInCanvas": false,
+          "renderer": "ANGLE (Intel, Intel(R) Arc(TM) Graphics (0x00007D55) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "actualOpen": true,
+        "size": [
+          355,
+          424
+        ],
+        "viewport": [
+          390,
+          844,
+          1
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 721,
+        "p50": 8.30000000000291,
+        "p95": 8.400000000001455,
+        "p99": 8.5,
+        "over12": 0,
+        "over20": 0,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "full",
+        "valid": true,
+        "scrollRange": 598,
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "htmlInCanvas": false,
+          "renderer": "ANGLE (Intel, Intel(R) Arc(TM) Graphics (0x00007D55) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "actualOpen": true,
+        "size": [
+          355,
+          424
+        ],
+        "viewport": [
+          390,
+          844,
+          1
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 720,
+        "p50": 8.30000000000291,
+        "p95": 8.400000000001455,
+        "p99": 8.5,
+        "over12": 0,
+        "over20": 0,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      },
+      {
+        "route": "finish",
+        "valid": true,
+        "scrollRange": 598,
+        "environment": {
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+          "htmlInCanvas": false,
+          "renderer": "ANGLE (Intel, Intel(R) Arc(TM) Graphics (0x00007D55) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "actualOpen": true,
+        "size": [
+          355,
+          424
+        ],
+        "viewport": [
+          390,
+          844,
+          1
+        ],
+        "params": {
+          "refraction": 1,
+          "edge": 32,
+          "blur": 2,
+          "transparency": 32,
+          "radius": 34,
+          "saturation": 116,
+          "highlight": 75,
+          "shadow": 16,
+          "tint": "#f7faef"
+        },
+        "mapBuildsDuringScroll": 0,
+        "callbacks": 720,
+        "p50": 8.30000000000291,
+        "p95": 8.400000000001455,
+        "p99": 8.5,
+        "over12": 0,
+        "over20": 0,
+        "longTasks": 0,
+        "modes": [
+          "refraction"
+        ],
+        "note": "Scheduling only; NOT presented FPS. Native scrolling and rendering require presentation trace."
+      }
+    ]
+  },
+  "resourceReleaseAfterMutation": {
+    "mode": "refraction",
+    "canvases": 0,
+    "current": null,
+    "released": {
+      "disposed": true,
+      "active": false,
+      "ready": false,
+      "frame": 0,
+      "captures": 1,
+      "contextLost": true
+    }
+  }
+}
