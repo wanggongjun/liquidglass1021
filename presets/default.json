@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "appearance": {
+    "refraction": 0.55,
+    "edge": 50,
+    "blur": 4,
+    "transparency": 100,
+    "radius": 40,
+    "saturation": 200,
+    "highlight": 60,
+    "shadow": 35,
+    "tint": "#ffffff"
+  }
+}

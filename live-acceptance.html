@@ -191,7 +191,7 @@ function smoothStep(a,b,t){t=Math.max(0,Math.min(1,(t-a)/(b-a)));return t*t*(3-2
 function sdf(x,y,w,h,r){const qx=Math.abs(x)-w+r,qy=Math.abs(y)-h+r;return Math.min(Math.max(qx,qy),0)+Math.hypot(Math.max(qx,0),Math.max(qy,0))-r}
 const filter=document.querySelector('#liquid-refraction'),map=filter.querySelector('feImage'),disp=filter.querySelector('feDisplacementMap'),canvas=document.createElement('canvas'),ctx=canvas.getContext('2d');
 
-const defaults={refraction:1,edge:32,blur:2,transparency:32,radius:34,saturation:116,highlight:75,shadow:16,tint:'#f7faef'};
+const defaults={"refraction":0.55,"edge":50,"blur":4,"transparency":100,"radius":40,"saturation":200,"highlight":60,"shadow":35,"tint":"#ffffff"};
 const specs=[
  ['refraction','折射强度',0,3,.05,v=>v.toFixed(2)+'×'],
  ['edge','折射边缘宽度',4,100,1,v=>v+' px'],
