@@ -2,7 +2,9 @@
 
 浅色、双层面板的本地液态玻璃演示。首页可以切换最早初版与当前终版；两种模式都支持底部上拉或点击展开、下滑或点击关闭。
 
-正式版 `v1.0.0` 默认效果：
+[在线体验](https://wanggongjun.github.io/liquidglass1021/) · [下载正式版](https://github.com/wanggongjun/liquidglass1021/releases/latest)
+
+正式版默认效果：
 
 ![正式版默认效果](previews/v1.0.0-default.png)
 
@@ -57,7 +59,7 @@ python -m http.server 8080
 
 基于 [xiaofangstudio/liquid-glass-web](https://github.com/xiaofangstudio/liquid-glass-web) 与 [Shu Ding 的 liquid-glass](https://github.com/shuding/liquid-glass) 的 SVG 位移思路。终版 WebGL2 缓存渲染不依赖外部库。人物和内容均为虚构。
 
-第三方声明见 [THIRD-PARTY-NOTICES.txt](THIRD-PARTY-NOTICES.txt)。未配置 GitHub Pages 或其他公开部署。
+第三方声明见 [THIRD-PARTY-NOTICES.txt](THIRD-PARTY-NOTICES.txt)。在线演示通过 GitHub Pages 发布，也可以下载后离线使用。
 
 实时修复验收：底板选中高亮参与折射。
 
