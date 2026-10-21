@@ -1,0 +1,20 @@
+{
+  "kind": "geometry analysis, NOT measured GPU speedup",
+  "referenceCssSize": [
+    750,
+    402
+  ],
+  "referenceDpr": 2,
+  "radius": 34,
+  "edge": 32,
+  "totalPixels": 301500,
+  "zeroAnalyticDisplacementPixels": 232881,
+  "zeroAnalyticDisplacementFraction": 0.7724079601990049,
+  "conservativeRectangularCenterFraction": 0.7555157545605307,
+  "conservativeDisplacementBandFraction": 0.24448424543946934,
+  "baseScale": 46.0,
+  "encodedCenterChannel": 128,
+  "encodedCenterTheoreticalOffsetCssPixels": 0.09019607843137223,
+  "physicalPixels": 1206000,
+  "rgba8MiBPerFullSizeSurface": 4.60052490234375
+}

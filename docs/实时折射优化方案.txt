@@ -1,0 +1,92 @@
+液态玻璃：真实动态背景下的优化审查
+日期：2026-10-21
+审查基线：6703fb7；正式入口 modes/final.html，原交付 outputs/liquid-glass/index.html 与其一致。
+
+结论
+继续以原生 backdrop-filter 读取真实页面，优先做滤镜工作区域优化。先取得呈现级性能基线，再验证“单一背景滤镜内的边缘分区”；不再把 DOM 副本或静态纹理作为通用页面的解决方案。
+目前没有足够证据承诺原外观在用户机器上稳定120FPS。本报告是代码审查、第一方资料研究和几何计算，不是优化版本的性能验收。
+
+一、需求与正确性约束
+1. 背景是真实页面，包括原生文字选中、输入光标、焦点、悬停、CSS变化及动态媒体。
+2. 页面正常原生滚动；滚动和停止期间使用同一折射方式，不临时关折射、不冻结背景、不限背景更新帧率。
+3. 保留用户已保存的外观参数、个人信息清晰文字层、底部展开/关闭两种状态。
+4. 120Hz每个刷新间隔约8.33ms，但仅看到rAF约8.33ms或WebGL绘制低于1ms，不等于完整帧按时呈现。
+
+二、本地代码审查
+48行：只有feImage和一个feDisplacementMap，没有色散的三路位移，也没有feTurbulence噪声。这些常见的删减建议对本项目无效。
+174行：正式默认已经是SVG；未选择实验模式时不创建CachedGlass，不进行页面快照。
+217行：实际链路为真实背景 → SVG位移 → CSS blur → saturate。切勿擅自交换blur和位移的先后，边缘结果会变。
+241行：updateGlass以宽、高、圆角、边缘宽度为缓存键。位移图只在相关尺寸/参数变化时生成，滚动时不生成。这段O(W×H)计算和toDataURL可以优化首次打开/调参响应，但不是稳态滚动主因。
+251行：ResizeObserver监听尺寸而非滚动；没有滚动时反复写SVG参数的正式路径。
+138、223行：实验CachedGlass切回SVG后停止绘制，但其观察器与纹理仍保留。后续应补实验渲染器的挂起/释放，防止使用过实验模式后，DOM变化仍触发无用捕获。这是附带资源问题，不能拿它冒充纯SVG滚动的主要瓶颈。
+样式层：固定面板、独立资料文字、底色/高光/阴影已经分离；没有多个嵌套背景折射层。底板插画含多重box-shadow，若轨迹证明滚动期间重栅格化明显，再把静态插画改为等价SVG资源；不要预先改文字或伪造页面。
+最有根据的假设：瓶颈在真实背景更新引起的滤镜、离屏图像和合成成本。CPU/GPU/驱动具体谁超时，当前没有新的呈现轨迹，不下定论。
+
+三、查到的路线与取舍
+A. 原生SVG背景折射：保留。数据源正确；Skia当前源码有运行时shader实现，不能笼统声称“SVG都在CPU上，换WebGL才上GPU”。具体Chrome版本及GPU后端要实测。
+B. html2canvas/foreignObject/DOM克隆：否决为正式路线。molten-glass明确使用html2canvas快照；liquidGL使用自有光栅化和注册动态对象；cocolayuan方案使用DOM克隆。动态更新某些对象不等于原生Selection及所有浏览器绘制状态同步。更换截图库不会自动修复数据来源。
+C. Worker/OffscreenCanvas/WASM：适合一次性生成位移图，列为交互响应的次要优化。它们不会自动把CSS backdrop-filter搬进Worker，也不提供任意实时DOM背景纹理。
+D. will-change/translateZ/contain：只在轨迹证明层提升有用时单独试验。不要全页添加。will-change:filter、祖先filter/opacity/mask等可能改变Backdrop Root；contain/裁剪也可能改变阴影、采样边界或布局语义。
+E. 降低DPR、减小模糊、降低背景帧率、滚动关折射：可能省成本，但会改变质量或时序，不作为用户既定外观下的默认修复。filterRes已从现行Filter Effects规范移除，不能当作可靠的SVG分辨率控制开关。
+F. CSS mask/clip-path做一圈边缘：可作为视觉裁切，但不能由此推断内部位移只算了那一圈。规范中的最终裁切和滤镜计算区域不同；必须明确限定滤镜primitive子区域并看轨迹。
+G. HTML-in-Canvas：值得隔离研究，但不能现在取代正式入口。Chrome官方说明其Origin Trial延续到Chrome160、API在150/155间已变化；WICG设计支持绘制原生选中状态，并通过paint事件同步DOM绘制。它比DOM克隆更有前途，但需要调整DOM结构、能力检测、输入/可访问性验证；线程滚动的自动同步仍是提案讨论事项。不能宣称它已经解决120Hz滚动或能无条件读取任意网页像素。
+H. 原生应用/定制浏览器合成器：若必须在固定硬件上保证同等视觉与帧预算，可进一步评估合成器中直接消费真实背景纹理的定制效果。普通Electron页面里继续写相同CSS不会自动提速；修改浏览器/原生渲染架构的成本和维护范围很大，不是这个本地网页的首选。
+
+四、首选实验：一个背景平面、一个SVG滤镜中的分区
+现有位移图的中心在数学上是常量，真正变化集中在边缘。以此前测量尺寸750×402、默认edge32/radius34计算：
+- 总面积301500 CSS像素；解析位移为零的像素232881，约77.24%。
+- 用34px宽的保守矩形边带包住圆角和折射区域，变化路径只需覆盖约24.45%的面积。
+- DPR2时整块约120.6万物理像素，一张全尺寸RGBA8表面约4.60MiB；这不等于实际显存占用，也不等于当前每帧内存流量。
+完整计算见“实时折射几何分析.json”；这些是参考默认参数的几何估算，不是用户当前参数，不是速度提升百分比。
+
+候选结构：
+真实Backdrop SourceGraphic
+  ├─ 顶/底/左/右非重叠区域：同一位移图、同一全局坐标的feDisplacementMap
+  └─ 中心区域：等价常量位移的便宜路径
+              ↓ 在同一SVG中合并
+              ↓ 保持原顺序blur，再saturate
+              ↓ 原有底色/高光/阴影和清晰资料文字
+
+优先尝试primitive的x/y/width/height子区域，保持原来的整块面板背景输入和边界，避免一上来拆成多个DOM backdrop-filter抓取面。
+技术依据：Filter Effects 1定义primitive子区域限制计算与输出；Skia位移滤镜代码也按desiredOutput和最大位移推算输入范围。这给出了优化依据，但多个子图/合并可能增加开销，必须用真实轨迹决定。
+
+实现中不可跳过的细节：
+1. feImage保持全局宽高坐标，不能把整张位移图重新缩放到某条边带。
+2. 边带输入需要足够的位移采样范围；输出分区不能误裁输入。
+3. 若分区后再做统一blur，应先无缝合并；若分开blur，各区必须预留模糊采样边界，约3σ只是常用有限核估算，不是无限高斯的数学精确边界。
+4. 保持原外缘的镜像/裁切行为。多个独立小DOM面板会改变各自的边界，容易在接缝、圆角或外缘穿帮。
+5. 当前8bit贴图把中性值编码为128，128/255不严格等于0.5。默认scale46时理论偏移约0.0902 CSS像素；实际输出取决于采样/舍入。中心不能未经像素验证就直接替换成完全不偏移的SourceGraphic。
+6. 分区接缝要落在设备像素边界，覆盖高DPR、浏览器缩放、亚像素定位。不能用透明叠加造成双重模糊或双重染色。
+7. 圆角/边缘宽度很大时，中心可为空；此时直接使用原单次位移图，不强行拆分。路线选择只在尺寸/参数变化时确定，不能随滚动改变。
+
+五、实施次序与退出条件
+阶段0：保留现有正式入口，建立隔离实验页。先做呈现级基线。
+阶段1：在同一浏览器/屏幕刷新率/视口/DPR/缩放/电源状态下，导入同一份用户参数，固定内容和滚动轨迹。人工滚轮/触摸输入为主，rAF受控滚动只作补充。
+阶段2：分别记录隐藏、原SVG、仅blur的诊断对照、仅位移的诊断对照、分区候选。诊断对照只用于归因，不进入正式滚动逻辑。
+阶段3：每组预热后至少3次、每次约10秒。观察Chrome Performance的Frames、GPU、Raster、Main、渲染层和重绘；统计正常/部分呈现/丢帧、连续卡顿、有效帧间隔分布、首开延迟。rAF不作为呈现FPS。
+阶段4：分区方案先过视觉正确性，再过性能。选中高亮跨玻璃边缘、输入光标、按钮悬停、CSS动画、动态文本、Canvas/视频、开关过渡、各外观极值、DPR与缩放均覆盖。高对比文字/细网格用于暴露接缝，截图之外还要看滚动时序。
+阶段5：只有在同等正确性下，可重复减少超预算帧和长停顿，才替换默认。若采集波动大于收益、增加合并成本、出现边界差异，放弃该实现并记录数据，不把理论面积收益写成实测提速。
+阶段6：如轨迹显示主要成本来自背景抓取/全表面模糊而非位移，边缘分区收益会有限；停止堆叠复杂SVG，转为评估HTML-in-Canvas隔离原型或明确浏览器平台上限。
+
+建议验收目标：目标设备真实120Hz下，预热后的固定测试中尽量消除持续性丢帧，掉帧率争取低于1%；逐组报告实际结果。该数字是目标而非承诺。若用户硬件/浏览器无法达到，直说失败，不偷偷调整其外观或冻结背景。
+
+六、第一方来源（2026-10-21访问）
+[1] 原项目实现与说明：https://github.com/xiaofangstudio/liquid-glass-web
+[2] Chrome Frames与partial/dropped帧说明：https://developer.chrome.com/docs/devtools/performance/reference#frames
+[3] Chrome Rendering诊断：https://developer.chrome.com/docs/devtools/rendering/performance
+[4] Filter Effects 1子区域：https://drafts.csswg.org/filter-effects-1/#FilterPrimitiveSubRegion
+[5] Filter Effects 2背景、顺序、Backdrop Root：https://drafts.csswg.org/filter-effects-2/
+[6] Skia位移滤镜当前源码：https://skia.googlesource.com/skia/+/refs/heads/main/src/effects/imagefilters/SkDisplacementMapImageFilter.cpp
+[7] html2canvas自身局限：https://html2canvas.hertzen.com/documentation
+[8] molten-glass数据来源：https://github.com/rubjo/molten-glass
+[9] liquidGL快照与动态注册：https://github.com/naughtyduk/liquidGL
+[10] DOM克隆路线：https://github.com/cocolayuan/liquid-glass
+[11] 120fps宣传的限制条件与降级选项：https://github.com/sohumsuthar/liquid-glass#performance
+[12] 位移图缓存/Worker及滚动限制：https://github.com/Meapri/liquid-glass-web#performance-notes
+[13] Chrome HTML-in-Canvas实验状态与API变更：https://developer.chrome.com/blog/html-in-canvas-ot-changes
+[14] HTML-in-Canvas同步及线程滚动讨论：https://github.com/WICG/html-in-canvas
+[15] 原生选择绘制意图：https://github.com/WICG/html-in-canvas/blob/main/security-privacy-questionnaire.md
+[16] OffscreenCanvas职责：https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas
+[17] will-change资源及使用边界：https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/will-change
+
+资料边界：规范部分为编辑草案；提案/源码主分支不等于用户已安装浏览器的实际行为。第三方仓库作者的性能数字未在本机复现，不作为本项目验收证据。网上资料无法穷尽，本报告覆盖了主要数据来源、滤镜、合成、快照和实验API路线。
